@@ -11,7 +11,7 @@
     "debug": "node --inspect node_modules/.bin/jest --runInBand"
   },
   "keywords": [],
-  "author": "Saul Ordonez",
+  "author": "Saul Ordonez, Calvin Will, Veronica Stanley-Katz, Drew Petersen, Kirtiraja Zakheim",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.6.4",
