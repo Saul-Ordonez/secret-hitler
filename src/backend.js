@@ -1,6 +1,6 @@
 // export class Object {
   // }
-  export let deckArray = ['fascist1','fascist2','fascist3','fascist4','fascist5','fascist6','fascist7','fascist8','fascist9','fascist10','fascist11','liberal1','liberal2','liberal3','liberal4','liberal5','liberal6']
+  export let masterDeck = ['fascist1','fascist2','fascist3','fascist4','fascist5','fascist6','fascist7','fascist8','fascist9','fascist10','fascist11','liberal1','liberal2','liberal3','liberal4','liberal5','liberal6']
   //number of players
   //Player one sign in - looped based off of input player numbers
   //so player 1 = chad
@@ -40,14 +40,17 @@
       this.legistlateCards = [];
       this.currentChancellor = "";
       this.currentPresident = "";
+      this.drawnCardsArray = [];
+      // this.discardedCardsArray = [];
       //Maybe have discarded cards array
 
     }
-    shuffleDeck(deckToShuffle) {
+    shuffleDeck() {
       let isDeckShuffled = false;
+      let playableCards = masterDeck
       while (isDeckShuffled === false) {
-        let number = Math.floor(Math.random() * deckToShuffle.length);
-        let card = deckToShuffle.splice(number, 1);
+        let number = Math.floor(Math.random() * playableCards.length);
+        let card = playableCards.splice(number, 1);
         this.deck.push(card.toString());
         if (this.deck.length === 17) {
           isDeckShuffled = true;
@@ -67,6 +70,12 @@
       this.playerOrder[number2].party = "Fascist";
     }
 
+    drawThreeCards() {
+      this.drawnCardsArray.push(this.deck[0])
+      this.drawnCardsArray.push(this.deck[1])
+      this.drawnCardsArray.push(this.deck[2])
+      return this.drawnCardsArray
+    }
 
   }
   //random 1st president

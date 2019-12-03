@@ -1,10 +1,11 @@
-import { Game, deckArray, Players } from './../src/backend.js'
+import { Game, masterDeck, Players } from './../src/backend.js'
 
 describe ('Game', () => {
   test('should populate the deck array based on random elements from total deck', () => {
     let players = 5
     let game = new Game(players);
-    game.shuffleDeck(deckArray);
+    game.shuffleDeck();
+    console.log(game.deck);
     expect(game.deck.length).toEqual(17)
   });
   test('should assign two players a fascist and one of them as hitler', () => {
@@ -18,5 +19,14 @@ describe ('Game', () => {
     game.assignParty();
     expect(game.playerOrder[0].party==="Fascist" || game.playerOrder[1].party==="Fascist" || game.playerOrder[2].party==="Fascist" || game.playerOrder[3].party==="Fascist" || game.playerOrder[4].party==="Fascist");
     expect(game.playerOrder[0].secret==="Hitler" || game.playerOrder[1].secret==="Hitler" || game.playerOrder[2].secret==="Hitler" || game.playerOrder[3].secret==="Hitler" || game.playerOrder[4].secret==="Hitler");
+  })
+  test('should return an array of three cards', () => {
+    let players = 5
+    let game = new Game(players);
+    game.shuffleDeck();
+    game.drawThreeCards();
+    console.log(game.deck);
+    console.log(game.drawnCardsArray);
+    expect(game.drawnCardsArray.length).toEqual(3)
   })
 });
