@@ -89,7 +89,7 @@ describe ('Game', () => {
     let game9 = new Game(5);
     game9.playerOrder = [player1, player2, player3, player4, player5];
     game9.shuffleDeck();
-    game9.totalYesVote = 2;
+    game9.totalYesVote = 3;
     game9.electionTracker = 2;
     player1.voteHandle(game9) ;
     expect(player1.status).toEqual("Chancellor");
