@@ -43,10 +43,189 @@
 }
 
 
+.liberalBoard {
+  display: grid;
+  width:1000px;
+  height: 250px;
+  grid-template-areas:
+  "a a a a a a a a a"
+  "i b b b b b b b l"
+  "i j d e f g h m l"
+  "i j c c c c c m l"
+  "i k k k k k k k l";
+  grid-template-rows: 1fr 2fr 3fr 2fr 1fr;
+
+  grid-template-columns: 1fr 2fr 3fr 3fr 3fr 3fr 3fr 2fr 1fr ;
+}
+
+.liberalBoard > .blackLibBoarder {
+  grid-area: a;
+  background-color: black;
+}
+
+.liberalBoard > .blueBoarder {
+  grid-area: b;
+  background-color: lightblue;
+  text-align: center;
+}
+
+.liberalBoard > .electionTracker {
+  grid-area: c;
+  background-color: teal;
+  text-align: center;
+}
+
+.liberalBoard > .firstLib {
+  grid-area: d;
+  background-color: red;
+  border: solid;
+  border-color: silver;
+}
+
+.liberalBoard > .secondLib {
+  grid-area: e;
+  background-color: orange;
+  border: solid;
+  border-color: silver;
+}
+.liberalBoard > .thirdLib {
+  grid-area: f;
+  background-color: yellow;
+  border: solid;
+  border-color: silver;
+}
+.liberalBoard > .fourthLib {
+  grid-area: g;
+  background-color: green;
+  border: solid;
+  border-color: silver;
+}
+
+.liberalBoard > .fifthLib {
+grid-area: h;
+background-color: purple;
+border: solid;
+border-color: silver;
+}
+.liberalBoard > .blackLibSideL {
+grid-area: i;
+background-color: black;
+}
+.liberalBoard > .blackLibSideR {
+grid-area: l;
+background-color: black;
+}
+.liberalBoard > .blueSideL {
+grid-area: j;
+background-color: lightblue;
+}
+
+.liberalBoard > .blueSideR {
+grid-area: m;
+background-color: lightblue;
+}
+.liberalBoard > .blackLibBottom {
+grid-area: k;
+background-color: black;
+}
 
 
+.fascistBoard {
+  display: grid;
+  width:1000px;
+  height: 250px;
+  grid-template-areas:
+  "a a a a a a a a a a"
+  "i b b b b b b b b l"
+  "i j d e f g h n m l"
+  "i j c c c c c c m l"
+  "i k k k k k k k k l";
+  grid-template-rows: 1fr 2fr 4fr 1fr 1fr;
 
+  grid-template-columns: 1fr 2fr 3fr 3fr 3fr 3fr 3fr 3fr 2fr 1fr ;
+}
 
+.fascistBoard > .blackFasBoarder {
+  grid-area: a;
+  background-color: black;
+}
+
+.fascistBoard > .redBoarder {
+  grid-area: b;
+  background-color: orange;
+  text-align: center;
+}
+
+.fascistBoard > .redBoarderB {
+  grid-area: c;
+  background-color: orange;
+  text-align: center;
+}
+
+.fascistBoard > .firstFas {
+  grid-area: d;
+  background-color: red;
+  border: solid;
+  border-color: silver;
+}
+
+.fascistBoard > .secondFas {
+  grid-area: e;
+  background-color: pink;
+  border: solid;
+  border-color: silver;
+}
+.fascistBoard > .thirdFas {
+  grid-area: f;
+  background-color: yellow;
+  border: solid;
+  border-color: silver;
+  text-align: center;
+}
+.fascistBoard > .fourthFas {
+  grid-area: g;
+  background-color: green;
+  border: solid;
+  border-color: silver;
+  text-align: center;
+}
+
+.fascistBoard > .fifthFas {
+grid-area: h;
+background-color: lightblue;
+border: solid;
+border-color: silver;
+text-align: center;
+}
+
+.fascistBoard > .sixthFas {
+grid-area: n;
+background-color: purple;
+border: solid;
+border-color: silver;
+text-align: center;
+}
+.fascistBoard > .blackFasSideL {
+grid-area: i;
+background-color: black;
+}
+.fascistBoard > .blackFasSideR {
+grid-area: l;
+background-color: black;
+}
+.fascistBoard > .redSideL {
+grid-area: j;
+background-color: orange;
+}
+
+.fascistBoard > .redSideR {
+grid-area: m;
+background-color: orange;
+}
+.fascistBoard > .blackFasBottom {
+grid-area: k;
+background-color: black;
+}
 
 
 
