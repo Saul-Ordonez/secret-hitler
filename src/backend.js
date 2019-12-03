@@ -1,9 +1,6 @@
-// export class Object {
-  // }
+
   export let masterDeck = ['fascist1','fascist2','fascist3','fascist4','fascist5','fascist6','fascist7','fascist8','fascist9','fascist10','fascist11','liberal1','liberal2','liberal3','liberal4','liberal5','liberal6']
-  //number of players
-  //Player one sign in - looped based off of input player numbers
-  //so player 1 = chad
+
 
   export class Players {
     constructor(userName) {
@@ -12,20 +9,18 @@
       this.party = "Liberal";
       this.secret = "";
     }
-
-    //party assignment and secret assignment
-
-    //Random first president candidate
-
+    appointChancellor() {
+      this.status = "Chancellor";
+    }
+    shootPlayer(gameObject) {
+      this.status = "Dead";
+      for (let i = 0; i < gameObject.playerOrder.length; i++) {
+        if (gameObject.playerOrder[i].userName === this.userName) {
+          gameObject.playerOrder.splice(i, 1);
+        }
+      }
+    }
   }
-
-
-
-  // failed election variable
-
-  // term limit array to store and restor to turn array
-
-  // turn array itself
 
   export class Game {
     constructor(players){
@@ -37,22 +32,21 @@
       this.liberalPolicies = 0;
       this.fascistPolicies = 0;
       this.electionTracker = 0;
-      this.legistlateCards = [];
       this.currentChancellor = "";
       this.currentPresident = "";
       this.drawnCardsArray = [];
-      // this.discardedCardsArray = [];
-      //Maybe have discarded cards array
+
 
     }
     shuffleDeck() {
       let isDeckShuffled = false;
-      let playableCards = masterDeck
+      let playableCards = masterDeck.slice();
+      this.deck = [];
       while (isDeckShuffled === false) {
         let number = Math.floor(Math.random() * playableCards.length);
         let card = playableCards.splice(number, 1);
         this.deck.push(card.toString());
-        if (this.deck.length === 17) {
+        if (this.deck.length === masterDeck.length) {
           isDeckShuffled = true;
         }
       }
@@ -65,20 +59,43 @@
       partyArray.splice[number, 1];
       let number2 = Math.floor(Math.random() * partyArray.length);
       if (number === number2) {
-        number2 = number2 +1;
+        if (number2 = (this.players - 1)) {
+          number2 = 0;
+        }else {
+          number2 = number2 +1;
+        }
       }
       this.playerOrder[number2].party = "Fascist";
     }
-
-    drawThreeCards() {
+    drawThreeCards(){
+      this.drawnCardsArray = this.deck.splice(0,3)
+      return this.drawnCardsArray
+    }
+    lookTop3() {
       this.drawnCardsArray.push(this.deck[0])
       this.drawnCardsArray.push(this.deck[1])
       this.drawnCardsArray.push(this.deck[2])
       return this.drawnCardsArray
     }
+    cardPlayedOnBoard() {
+      for (let i = 0; i < masterDeck.length; i++) {
+        if (masterDeck[i] === this.drawnCardsArray[0]) {
+          masterDeck.splice(i, 1);
+          if (this.drawnCardsArray[0].includes('f')) {
+            this.fascistPolicies ++
+          }else if (this.drawnCardsArray[0].includes('l')) {
+            this.liberalPolicies ++
+          }
+        }
+      }
+    }
+    firstPresident() {
+      let number = Math.floor(Math.random() * this.playerOrder.length);
+      this.playerOrder[number].status = "President";
+    }
 
   }
-  //random 1st president
+
 
   // president assigns chancelor
 
@@ -88,18 +105,25 @@
 
   //president legistative cards from user inputs to updating main board
 
-  //show 3 top cards
 
   // shoot and remove player and check if hitler
 
-  // template cardshuffler USABlE for other shuffle scenarios
 
-  // template inelligiblechancelors
+//// GAMEFLOW
+
+
+  /// UPKEEP
 
   // template player to the left
 
+  // template inelligiblechancelors Frees up old inelligible and sets new inelligible
+
   //failed election tracker and function to enact
 
-  // reshuffle protocol
+  // reshuffle protocol (less than three cards)
 
   //check board status for wins
+
+  // clear drawn cards partyArray
+
+   // Vote needs reset

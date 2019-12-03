@@ -5,7 +5,6 @@ describe ('Game', () => {
     let players = 5
     let game = new Game(players);
     game.shuffleDeck();
-    console.log(game.deck);
     expect(game.deck.length).toEqual(17)
   });
   test('should assign two players a fascist and one of them as hitler', () => {
@@ -14,19 +13,71 @@ describe ('Game', () => {
     let player3 = new Players('Sheila');
     let player4 = new Players('Tara');
     let player5 = new Players('George');
-    let game = new Game(5);
-    game.playerOrder = [player1, player2, player3, player4, player5];
-    game.assignParty();
-    expect(game.playerOrder[0].party==="Fascist" || game.playerOrder[1].party==="Fascist" || game.playerOrder[2].party==="Fascist" || game.playerOrder[3].party==="Fascist" || game.playerOrder[4].party==="Fascist");
-    expect(game.playerOrder[0].secret==="Hitler" || game.playerOrder[1].secret==="Hitler" || game.playerOrder[2].secret==="Hitler" || game.playerOrder[3].secret==="Hitler" || game.playerOrder[4].secret==="Hitler");
+    let game3 = new Game(5);
+    game3.playerOrder = [player1, player2, player3, player4, player5];
+    game3.assignParty();
+    expect(game3.playerOrder[0].party==="Fascist" || game3.playerOrder[1].party==="Fascist" || game3.playerOrder[2].party==="Fascist" || game3.playerOrder[3].party==="Fascist" || game3.playerOrder[4].party==="Fascist");
+    expect(game3.playerOrder[0].secret==="Hitler" || game3.playerOrder[1].secret==="Hitler" || game3.playerOrder[2].secret==="Hitler" || game3.playerOrder[3].secret==="Hitler" || game3.playerOrder[4].secret==="Hitler");
   })
   test('should return an array of three cards', () => {
     let players = 5
-    let game = new Game(players);
-    game.shuffleDeck();
-    game.drawThreeCards();
-    console.log(game.deck);
-    console.log(game.drawnCardsArray);
-    expect(game.drawnCardsArray.length).toEqual(3)
+    let game2 = new Game(players);
+    game2.shuffleDeck();
+    game2.drawThreeCards();
+    expect(game2.drawnCardsArray.length).toEqual(3)
   })
+  test('should return an array of three cards and not touch the deck', () => {
+    let players = 5
+    let game4 = new Game(players);
+    game4.shuffleDeck();
+    game4.lookTop3();
+    expect(game4.drawnCardsArray.length).toEqual(3)
+    expect(game4.deck.length).toEqual(17)
+  })
+  test('should remove a card from the master deck and add it to lib or fas policies', () => {
+    let players = 5
+    let game5 = new Game(players);
+    game5.shuffleDeck();
+    game5.drawnCardsArray = ['fascist3'];
+    game5.cardPlayedOnBoard();
+    game5.shuffleDeck();
+    expect(masterDeck.length).toEqual(16);
+    expect(game5.fascistPolicies).toEqual(1)
+  })
+  test('should assign one player as president', () => {
+    let player1 = new Players('Thom');
+    let player2 = new Players('Bill');
+    let player3 = new Players('Sheila');
+    let player4 = new Players('Tara');
+    let player5 = new Players('George');
+    let game6 = new Game(5);
+    game6.playerOrder = [player1, player2, player3, player4, player5];
+    game6.firstPresident();
+    expect(game6.playerOrder[0].status==="President" || game6.playerOrder[1].status==="President" || game6.playerOrder[2].status==="President" || game6.playerOrder[3].status==="President" || game6.playerOrder[4].status==="President");
+  })
+  test('should assign one player as chancellor', () => {
+    let player1 = new Players('Thom');
+    let player2 = new Players('Bill');
+    let player3 = new Players('Sheila');
+    let player4 = new Players('Tara');
+    let player5 = new Players('George');
+    let game7 = new Game(5);
+    game7.playerOrder = [player1, player2, player3, player4, player5];
+    player1.appointChancellor() ;
+    expect(game7.playerOrder[0].status==="Chancellor");
+  })
+  test('should assign one player as dead', () => {
+    let player1 = new Players('Thom');
+    let player2 = new Players('Bill');
+    let player3 = new Players('Sheila');
+    let player4 = new Players('Tara');
+    let player5 = new Players('George');
+    let game8 = new Game(5);
+    game8.playerOrder = [player1, player2, player3, player4, player5];
+    player1.shootPlayer(game8) ;
+    expect(game8.playerOrder[0].length === 4);
+    expect(player1.status === "Dead");
+  })
+
+
 });
