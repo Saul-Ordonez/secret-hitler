@@ -17,6 +17,8 @@
       for (let i = 0; i < gameObject.playerOrder.length; i++) {
         if (gameObject.playerOrder[i].userName === this.userName) {
           gameObject.playerOrder.splice(i, 1);
+          gameObject.players --;
+          // Possible Frontend hitler status shot or chancellor with 3 cards in Fasc
         }
       }
     }
@@ -97,7 +99,7 @@
   }
 
 
-  // president assigns chancelor
+
 
   //hold the vote (check for 3 times hitler)
 
@@ -106,7 +108,6 @@
   //president legistative cards from user inputs to updating main board
 
 
-  // shoot and remove player and check if hitler
 
 
 //// GAMEFLOW

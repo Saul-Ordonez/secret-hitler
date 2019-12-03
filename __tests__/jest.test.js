@@ -77,6 +77,7 @@ describe ('Game', () => {
     player1.shootPlayer(game8) ;
     expect(game8.playerOrder[0].length === 4);
     expect(player1.status === "Dead");
+    expect(game8.players).toEqual(4)
   })
 
 
