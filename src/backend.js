@@ -71,8 +71,6 @@
   }
   //random 1st president
 
-  // assign party / secret cards
-
   // president assigns chancelor
 
   //hold the vote (check for 3 times hitler)
@@ -85,7 +83,7 @@
 
   // shoot and remove player and check if hitler
 
-  // template cardshuffler
+  // template cardshuffler USABlE for other shuffle scenarios
 
   // template inelligiblechancelors
 
