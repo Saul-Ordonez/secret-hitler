@@ -1,0 +1,112 @@
+.gameGrid {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto auto;
+}
+
+.player1 {
+  display: none;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.player2 {
+  display: none;
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.player3 {
+  display: none;
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.player4 {
+  display: none;
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.player5 {
+  display: none;
+  grid-column: 1;
+  grid-row: 2;
+}
+
+
+.player6 {
+  display: none;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+
+
+
+
+
+
+
+
+.voteButton {
+  display: none;
+}
+
+
+.nameInput5 {
+  display: none;
+}
+
+.nameInput6 {
+  display: none;
+}
+
+.affiliationCheck {
+  display: none;
+}
+
+.audio {
+  display: none;
+}
+
+.selectChancellor {
+  display: none;
+}
+
+.presidentPolicyCheck {
+  display: none;
+}
+
+.presidentPolicyElimination {
+  display: none;
+}
+
+.chancellorPolicyCheck {
+  display: none;
+}
+
+.chancellorPolicyElimination {
+  display: none;
+}
+
+.executiveAction {
+  display: none;
+}
+
+.liberalBoardWin {
+  display: none;
+}
+
+.liberalKillWin {
+  display: none;
+}
+
+.fascistBoardWin {
+  display: none;
+}
+
+.fascistHitlerWin {
+  display: none;
+}
