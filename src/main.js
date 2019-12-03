@@ -126,8 +126,11 @@ $("button#presidentVerifyButton").click(function() {
   $(".presidentPolicyElimination").show();
 })
 
-$("form.presidentPolicyForm").onchange(function() {
-  discardArray.push($("input[name=policyEliminator]:checked").val());
+$("form.presidentPolicyForm input").click(function(e) {
+  $("#" + $(this).next()[0].id).hide();
+  discardArray.push($("#" + $(this).next()[0].id).text());
+
+  //This was with Travis' help, to get the info for the selected radio to be removed STILL NEED TO FIGURE OUT REMOVAL AND CHANCELLOR ROUND.//
 
 })
 
