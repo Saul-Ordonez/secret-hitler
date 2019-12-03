@@ -9,8 +9,30 @@
       this.party = "Liberal";
       this.secret = "";
     }
-    appointChancellor() {
-      this.status = "Chancellor";
+    nominateChancellor() {
+      if (this.status === "Previous Power") {
+        return "This Player has already held power in the previous round.  They will be elligible in the next round.  Please Select another player.";
+      } else {
+      this.status = "Nominated";
+      }
+    }
+    voteHandle(gameObject){
+      if (gameObject.totalYesVote > (gameObject.players/2)) {
+        this.status = "Chancellor";
+        gameObject.electionTracker = 0;
+      }else {
+        this.status = 'Alive';
+        gameObject.electionTracker ++;
+        console.log(gameObject.deck);
+        if (gameObject.electionTracker === 3) {
+          gameObject.drawnCardsArray = gameObject.deck.splice(0,1)
+          console.log(gameObject.drawnCardsArray);
+          gameObject.cardPlayedOnBoard();
+          gameObject.electionTracker = 0;
+
+        }
+      }
+
     }
     shootPlayer(gameObject) {
       this.status = "Dead";
@@ -95,7 +117,6 @@
       let number = Math.floor(Math.random() * this.playerOrder.length);
       this.playerOrder[number].status = "President";
     }
-
   }
 
 

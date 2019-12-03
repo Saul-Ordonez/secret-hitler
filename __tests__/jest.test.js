@@ -55,7 +55,7 @@ describe ('Game', () => {
     game6.firstPresident();
     expect(game6.playerOrder[0].status==="President" || game6.playerOrder[1].status==="President" || game6.playerOrder[2].status==="President" || game6.playerOrder[3].status==="President" || game6.playerOrder[4].status==="President");
   })
-  test('should assign one player as chancellor', () => {
+  test('should nominate one player as chancellor', () => {
     let player1 = new Players('Thom');
     let player2 = new Players('Bill');
     let player3 = new Players('Sheila');
@@ -63,8 +63,9 @@ describe ('Game', () => {
     let player5 = new Players('George');
     let game7 = new Game(5);
     game7.playerOrder = [player1, player2, player3, player4, player5];
-    player1.appointChancellor() ;
-    expect(game7.playerOrder[0].status==="Chancellor");
+    player1.status = "Previous Power";
+    player1.nominateChancellor();
+    expect(game7.playerOrder[0].status).toEqual("Previous Power");
   })
   test('should assign one player as dead', () => {
     let player1 = new Players('Thom');
@@ -76,9 +77,23 @@ describe ('Game', () => {
     game8.playerOrder = [player1, player2, player3, player4, player5];
     player1.shootPlayer(game8) ;
     expect(game8.playerOrder[0].length === 4);
-    expect(player1.status === "Dead");
+    expect(player1.status).toEqual("Dead");
     expect(game8.players).toEqual(4)
   })
-
+  test('should vote in a chancellor', () => {
+    let player1 = new Players('Thom');
+    let player2 = new Players('Bill');
+    let player3 = new Players('Sheila');
+    let player4 = new Players('Tara');
+    let player5 = new Players('George');
+    let game9 = new Game(5);
+    game9.playerOrder = [player1, player2, player3, player4, player5];
+    game9.shuffleDeck();
+    game9.totalYesVote = 2;
+    game9.electionTracker = 2;
+    player1.voteHandle(game9) ;
+    expect(player1.status).toEqual("Chancellor");
+    expect(game9.electionTracker).toEqual(0);
+  })
 
 });
