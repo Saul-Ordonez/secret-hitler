@@ -18,6 +18,8 @@ $(document).ready(function() {
   let player6;
   let elector;
   let chancellor;
+  let delete1;
+  let delete2;
 
   $("button#5players").click(function() {
     $(".playerNum").hide();
@@ -60,12 +62,7 @@ $(document).ready(function() {
     $(".affiliationCheck").show();
     $(".nameInput5").hide();
     game.firstPresident();
-    $('#player1Affiliation').text("Your Party Afiiliation is " + player1.party + " , Your Secret Identity is " + player1.secret + " , Your Status is " + player1.status);
-    $('#player2Affiliation').text("Your Party Afiiliation is " + player2.party + " , Your Secret Identity is " + player2.secret + " , Your Status is " + player2.status);
-    $('#player3Affiliation').text("Your Party Afiiliation is " + player3.party + " , Your Secret Identity is " + player3.secret + " , Your Status is " + player3.status);
-    $('#player4Affiliation').text("Your Party Afiiliation is " + player4.party + " , Your Secret Identity is " + player4.secret + " , Your Status is " + player4.status);
-    $('#player5Affiliation').text("Your Party Afiiliation is " + player5.party + " , Your Secret Identity is " + player5.secret + " , Your Status is " + player5.status);
-    console.log(game.playerOrder);
+    playerTextUpdate();
   });
 
 
@@ -104,15 +101,19 @@ $(document).ready(function() {
     $(".nameInput6").hide();
     game.firstPresident();
     console.log(player1.party);
-    $('#player1Affiliation').text("Your Party Afiiliation is " + player1.party + " , Your Secret Identity is " + player1.secret + " , Your Status is " + player1.status);
-    $('#player2Affiliation').text("Your Party Afiiliation is " + player2.party + " , Your Secret Identity is " + player2.secret + " , Your Status is " + player2.status);
-    $('#player3Affiliation').text("Your Party Afiiliation is " + player3.party + " , Your Secret Identity is " + player3.secret + " , Your Status is " + player3.status);
-    $('#player4Affiliation').text("Your Party Afiiliation is " + player4.party + " , Your Secret Identity is " + player4.secret + " , Your Status is " + player4.status);
-    $('#player5Affiliation').text("Your Party Afiiliation is " + player5.party + " , Your Secret Identity is " + player5.secret + " , Your Status is " + player5.status);
-    $('#player6Affiliation').text("Your Party Afiiliation is " + player6.party + " , Your Secret Identity is " + player6.secret + " , Your Status is " + player6.status);
     console.log(game.playerOrder);
+    playerTextUpdate();
   });
-
+ function playerTextUpdate (){
+  $('#player1Affiliation').text("Your Party Afiiliation is " + player1.party + " , Your Secret Identity is " + player1.secret + " , Your Status is " + player1.status);
+  $('#player2Affiliation').text("Your Party Afiiliation is " + player2.party + " , Your Secret Identity is " + player2.secret + " , Your Status is " + player2.status);
+  $('#player3Affiliation').text("Your Party Afiiliation is " + player3.party + " , Your Secret Identity is " + player3.secret + " , Your Status is " + player3.status);
+  $('#player4Affiliation').text("Your Party Afiiliation is " + player4.party + " , Your Secret Identity is " + player4.secret + " , Your Status is " + player4.status);
+  $('#player5Affiliation').text("Your Party Afiiliation is " + player5.party + " , Your Secret Identity is " + player5.secret + " , Your Status is " + player5.status);
+  if (game.players === 6) {
+    $('#player6Affiliation').text("Your Party Afiiliation is " + player6.party + " , Your Secret Identity is " + player6.secret + " , Your Status is " + player6.status);
+  }
+}
   //affiliation button needs object information from backend//
 
 
@@ -183,6 +184,7 @@ $(document).ready(function() {
         chancellor = game.playerOrder[i];
         console.log(chancellor);
        game.playerOrder[i].nominateChancellor();
+       playerTextUpdate();
         $(".nameButton").prop("disabled", true);
         $(".selectChancellor").hide();
         $('.voteButton').show();
@@ -229,16 +231,35 @@ $(document).ready(function() {
       $('input.voteRadio').prop('checked', false);
       $('input.voteRadio').prop('disabled', true);
       console.log(game.playerOrder);
+      playerTextUpdate();
     } else {
       $(".newRound").show();
       console.log(game.playerOrder);
       $('input.voteRadio').prop('checked', false);
       $('input.voteRadio').prop('disabled', true);
       $('.voteButton').hide();
+      $('.newRound').show();
     }
     }
 
 
+  })
+
+  $('button#newRound').click(function() {
+    $(".newRound").hide();
+    $('.selectChancellor').show();
+    game.endOfRound();
+    playerTextUpdate();
+    $(".nameButton").prop("disabled", false);
+    console.log(game.playerOrder);
+    for ( let i = 0; i < game.playerOrder.length; i++){
+      if (game.playerOrder[i].status === 'Previous Power' || game.playerOrder[i].status === 'President') {
+        console.log(game.playerOrder[i].playerNumber);
+        let newVar = (game.playerOrder[i].playerNumber + "Name");
+        console.log(newVar);
+      $("#" + newVar).parent().prop('disabled', true);
+      }
+    }
   })
 
 
@@ -251,11 +272,13 @@ $(document).ready(function() {
     $("#presidentPolicy1").text(game.drawnCardsArray[0]);
     $("#presidentPolicy2").text(game.drawnCardsArray[1]);
     $("#presidentPolicy3").text(game.drawnCardsArray[2]);
+    $("form.presidentPolicyForm input").prop("checked", false);
+    $("form.chancellorPolicyForm input").prop("checked", false);
   });
 
 
   $("form.presidentPolicyForm input").click(function() {
-    $(this).hide();
+    delete1 = $(this).next().hide();
     console.log($(this));
     let badCard = $("#" + $(this).next()[0].id);
     discardArray.push(badCard.text());
@@ -283,7 +306,7 @@ $(document).ready(function() {
   });
 
   $("form.chancellorPolicyForm input").click(function() {
-    $(this).hide();
+    delete2 = $(this).next().hide();
     let badCard = $("#" + $(this).next()[0].id);
     discardArray.push(badCard.text());
     if (badCard.index() === 1) {
@@ -303,6 +326,9 @@ $(document).ready(function() {
     $('.selectChancellor').show();
     $(".nextRound").hide();
     game.endOfRound();
+    playerTextUpdate();
+    delete1.show();
+    delete2.show();
     $(".nameButton").prop("disabled", false);
     console.log(game.playerOrder);
     for ( let i = 0; i < game.playerOrder.length; i++){
