@@ -121,9 +121,24 @@ describe ('Game', () => {
     game10.endOfRound(game10);
     console.log(game10.deck);
     expect(game10.playerOrder[0].status).toEqual("President");
-    expect(game10.playerOrder[5].status).toEqual("Previous Power");
+    expect(game10.playerOrder[4].status).toEqual("Previous Power");
     expect(game10.totalYesVote).toEqual(0);
     expect(game10.drawnCardsArray).toEqual([]);
-    expect(game10.deck.length).toEqual(17);
+    expect(game10.deck.length).toEqual(16);
   })
+<<<<<<< HEAD
+=======
+  test('should assign ids to the players', () =>{
+    let player1 = new Players('Thom');
+    let player2 = new Players('Bill');
+    let player3 = new Players('Sheila');
+    let player4 = new Players('Tara');
+    let player5 = new Players('George');
+    let game11 = new Game(5);
+    game11.playerOrder = [player1, player2, player3, player4, player5];
+    game11.assignNumbers();
+    console.log(game11.playerOrder);
+    expect(game11.playerOrder[0].playerNumber).toEqual('player1')
+  })
+>>>>>>> a5b6748aabccd9f11d11ff8819e0a5e2ed1a4fae
 });

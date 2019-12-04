@@ -4,6 +4,7 @@ export class Players {
     this.status = "Alive";
     this.party = "Liberal";
     this.secret = "";
+    this.playerNumber = '';
   }
   nominateChancellor() {
     if (this.status === "Previous Power") {
@@ -50,6 +51,11 @@ export class Game {
     this.drawnCardsArray = [];
     this.masterDeck = ['fascist1','fascist2','fascist3','fascist4','fascist5','fascist6','fascist7','fascist8','fascist9','fascist10','fascist11','liberal1','liberal2','liberal3','liberal4','liberal5','liberal6'];
   }
+  assignNumbers(){
+    for (let i = 0; i < this.playerOrder.length; i++) {
+      this.playerOrder[i].playerNumber = `player${i+1}`
+    }
+}
   shuffleDeck() {
     let isDeckShuffled = false;
     let playableCards = this.masterDeck.slice();
