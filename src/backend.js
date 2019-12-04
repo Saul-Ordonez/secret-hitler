@@ -1,7 +1,3 @@
-
-export let masterDeck = ['fascist1','fascist2','fascist3','fascist4','fascist5','fascist6','fascist7','fascist8','fascist9','fascist10','fascist11','liberal1','liberal2','liberal3','liberal4','liberal5','liberal6']
-
-
 export class Players {
   constructor(userName) {
     this.userName = userName;
@@ -24,13 +20,11 @@ export class Players {
       this.status = 'Alive';
       gameObject.electionTracker ++;
       if (gameObject.electionTracker === 3) {
-        gameObject.drawnCardsArray = gameObject.deck.splice(0,1)
+        gameObject.drawnCardsArray = gameObject.deck.splice(0,1);
         gameObject.cardPlayedOnBoard();
         gameObject.electionTracker = 0;
-
       }
     }
-
   }
   shootPlayer(gameObject) {
     this.status = "Dead";
@@ -48,25 +42,23 @@ export class Game {
   constructor(players){
     this.players = players;
     this.playerOrder = []; //each element is player object
-    this.eligibleChancelors = [];
     this.deck = [];
     this.totalYesVote = 0;
     this.liberalPolicies = 0;
     this.fascistPolicies = 0;
     this.electionTracker = 0;
     this.drawnCardsArray = [];
-
-
+    this.masterDeck = ['fascist1','fascist2','fascist3','fascist4','fascist5','fascist6','fascist7','fascist8','fascist9','fascist10','fascist11','liberal1','liberal2','liberal3','liberal4','liberal5','liberal6'];
   }
   shuffleDeck() {
     let isDeckShuffled = false;
-    let playableCards = masterDeck.slice();
+    let playableCards = this.masterDeck.slice();
     this.deck = [];
     while (isDeckShuffled === false) {
       let number = Math.floor(Math.random() * playableCards.length);
       let card = playableCards.splice(number, 1);
       this.deck.push(card.toString());
-      if (this.deck.length === masterDeck.length) {
+      if (this.deck.length === this.masterDeck.length) {
         isDeckShuffled = true;
       }
     }
@@ -88,23 +80,23 @@ export class Game {
     this.playerOrder[number2].party = "Fascist";
   }
   drawThreeCards(){
-    this.drawnCardsArray = this.deck.splice(0,3)
-    return this.drawnCardsArray
+    this.drawnCardsArray = this.deck.splice(0,3);
+    return this.drawnCardsArray;
   }
   lookTop3() {
-    this.drawnCardsArray.push(this.deck[0])
-    this.drawnCardsArray.push(this.deck[1])
-    this.drawnCardsArray.push(this.deck[2])
-    return this.drawnCardsArray
+    this.drawnCardsArray.push(this.deck[0]);
+    this.drawnCardsArray.push(this.deck[1]);
+    this.drawnCardsArray.push(this.deck[2]);
+    return this.drawnCardsArray;
   }
   cardPlayedOnBoard() {
-    for (let i = 0; i < masterDeck.length; i++) {
-      if (masterDeck[i] === this.drawnCardsArray[0]) {
-        masterDeck.splice(i, 1);
+    for (let i = 0; i < this.masterDeck.length; i++) {
+      if (this.masterDeck[i] === this.drawnCardsArray[0]) {
+        this.masterDeck.splice(i, 1);
         if (this.drawnCardsArray[0].includes('f')) {
-          this.fascistPolicies ++
+          this.fascistPolicies ++;
         }else if (this.drawnCardsArray[0].includes('l')) {
-          this.liberalPolicies ++
+          this.liberalPolicies ++;
         }
       }
     }
@@ -114,27 +106,25 @@ export class Game {
     this.playerOrder[number].status = "President";
     let rearrange = this.playerOrder.splice(0,number);
     this.playerOrder = this.playerOrder.concat(rearrange);
-
   }
   endOfRound(){
-    this.totalYesVote = 0
+    this.totalYesVote = 0;
     this.drawnCardsArray = [];
     for (var i = 0; i < this.playerOrder.length; i++) {
       if (this.playerOrder[i].status === 'Previous Power') {
-        this.playerOrder[i].status = 'Alive'
+        this.playerOrder[i].status = 'Alive';
       }
       if (this.playerOrder[i].status === 'Chancellor') {
-        this.playerOrder[i].status = 'Previous Power'
+        this.playerOrder[i].status = 'Previous Power';
       }
     }
-    this.playerOrder[0].status = 'Previous Power'
+    this.playerOrder[0].status = 'Previous Power';
     let prevPres = this.playerOrder.splice(0,1);
     this.playerOrder.push(prevPres[0]);
-    this.playerOrder[0].status = 'President'
+    this.playerOrder[0].status = 'President';
     if (this.deck.length < 4) {
       this.shuffleDeck();
     }
-
   }
 }
 
