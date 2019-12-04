@@ -1,7 +1,7 @@
 .gameGrid {
   display: grid;
   grid-gap: 1rem;
-  grid-template-columns: auto;
+  grid-template-columns: auto auto auto;
   grid-template-rows: auto auto auto;
 }
 
@@ -173,7 +173,7 @@ grid-area: k;
 background-color: black;
 }
 
-.affiliationCheck {
+.bulletinBoard {
   display: grid;
   grid-column: 2;
   grid-row: 2;
@@ -351,5 +351,9 @@ background-color: black;
 }
 
 .nextRound {
+  display: none;
+}
+
+.newRound {
   display: none;
 }
