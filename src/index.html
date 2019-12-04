@@ -8,12 +8,13 @@
     <div class="jumbotron">
       <h1>Secret Hitler</h1>
     </div>
-    <div class="playerNum">
+    <div class="playerNum bulletinBoard">
+      <h2>Please select number of players</h2>
       <button type="button" id="5players">5</button>
       <button type="button" id="6players">6</button>
 
     </div>
-    <div class="nameInput5">
+    <div class="nameInput5 bulletinBoard">
       <form class="form5">
         <label for="">Player 1 name</label>
         <input type="text" name="playerName" id="player1">
@@ -29,7 +30,7 @@
       </form>
     </div>
 
-    <div class="nameInput6">
+    <div class="nameInput6 bulletinBoard">
       <form class="form6">
         <label for="">Player 1 name</label>
         <input type="text" name="playerName" id="player1b">
@@ -50,6 +51,7 @@
     <div class="player1">
       <button class="nameButton" disabled><span id="player1Name"></span></button>
       <button type="button" id='player1Btn' name="affiliation">Affiliation</button>
+      <h4><span id='titlePlaceholder1'></span></h4>
       <p id='player1Affiliation'></p>
       <div class="vote">
         <form class="voteForm">
@@ -63,6 +65,7 @@
       <div class="player2">
         <button class="nameButton" disabled><span id="player2Name"></span></button>
         <button type="button" id='player2Btn' name="affiliation">Affiliation</button>
+        <h4><span id='titlePlaceholder2'></span></h4>
         <p id='player2Affiliation'></p>
         <div class="form-group">
           <input class="voteRadio" type="radio" name="voteResponse2" value="1" disabled>Ja
@@ -73,6 +76,7 @@
       <div class="player3">
         <button class="nameButton" disabled><span id="player3Name"></span></button>
         <button type="button" id='player3Btn' name="affiliation">Affiliation</button>
+        <h4><span id='titlePlaceholder3'></span></h4>
         <p id='player3Affiliation'></p>
         <div class="form-group">
           <input class="voteRadio" type="radio" name="voteResponse3" value="1" disabled>Ja
@@ -83,6 +87,7 @@
       <div class="player4">
         <button class="nameButton" disabled><span id="player4Name"></span></button>
         <button type="button" id='player4Btn' name="affiliation">Affiliation</button>
+        <h4><span id='titlePlaceholder4'></span></h4>
         <p id='player4Affiliation'></p>
         <div class="form-group">
           <input class="voteRadio" type="radio" name="voteResponse4" value="1" disabled>Ja
@@ -93,6 +98,7 @@
       <div class="player5">
         <button class="nameButton" disabled><span id="player5Name"></span></button>
         <button type="button" id='player5Btn' name="affiliation">Affiliation</button>
+        <h4><span id='titlePlaceholder5'></span></h4>
         <p id='player5Affiliation'></p>
         <div class="form-group">
           <input class="voteRadio" type="radio" name="voteResponse5" value="1" disabled>Ja
@@ -103,18 +109,14 @@
       <div class="player6">
         <button class="nameButton" disabled><span id="player6Name"></span></button>
         <button type="button" id='player6Btn' name="affiliation">Affiliation</button>
+        <h4><span id='titlePlaceholder6'></span></h4>
         <p id='player6Affiliation'></p>
         <div class="form-group">
           <input class="voteRadio" type="radio" name="voteResponse6" value="1" disabled>Ja
           <input class="voteRadio" type="radio" name="voteResponse6" value="0" disabled>Nein
         </div>
       </div>
-        <div class="voteButton">
-          <h4>A president and chancellor have been nominated, all players please vote now.</h4>
-          <button type="button" id="voteTally">Tally Votes</button>
-        </div>
-    </form>
-      <div class="gameGrid">
+
 
       <div class="liberalBoard">
         <div class="blackLibBoarder">
@@ -158,6 +160,11 @@
         </div>
       </div>
 
+      <div class="voteButton bulletinBoard">
+        <h4>A president and chancellor have been nominated, all players please vote now.</h4>
+        <button type="button" id="voteTally">Tally Votes</button>
+      </div>
+    </form>
       <br>
 
       <div class="fascistBoard">
@@ -205,7 +212,7 @@
         </div>
       </div>
 
-      <div class="affiliationCheck">
+      <div class="affiliationCheck bulletinBoard">
         <h4>Players should now check to see which party affiliation they are in. Make sure to not show anyone else!</h4>
         <button type="button" id="audioPlay">Ready to Continue?</button>
       </div>
@@ -214,18 +221,18 @@
         <button type="button" id="audioDone" name="button">Continue</button>
       </div>
 
-      <div class="selectChancellor">
+      <div class="selectChancellor bulletinBoard">
         <h4>President, please elect a chancellor as your running mate by clicking on one of the other players names.</h4>
       </div>
 
 
-      <div class="presidentPolicyCheck">
+      <div class="presidentPolicyCheck bulletinBoard">
         <h3>Congratulations on a successful election, you have had <span id="electionTrack">0</span> failed elections in a row.</h3>
         <h4>Everyone look away from the screen except the President. President are you now alone?</h4>
         <button type="button" id="presidentVerifyButton">Yes I'm alone</button>
       </div>
 
-      <div class="presidentPolicyElimination">
+      <div class="presidentPolicyElimination bulletinBoard">
         <h4>President, please select 1 policy to discard</h4>
         <form class="presidentPolicyForm">
           <input type="radio" name="policyEliminator" value=""><span id="presidentPolicy1"></span>
@@ -234,12 +241,12 @@
         </form>
       </div>
 
-      <div class="chancellorPolicyCheck">
+      <div class="chancellorPolicyCheck bulletinBoard">
         <h4>Everyone look away from the screen except the Chancellor. Chancellor are you now alone?</h4>
         <button type="button" id="chancellorVerifyButton">Yes I'm alone</button>
       </div>
 
-      <div class="chancellorPolicyElimination">
+      <div class="chancellorPolicyElimination bulletinBoard">
         <h4>Chancellor, please select 1 policy to discard</h4>
         <form class="chancellorPolicyForm">
           <input type="radio" name="policyEliminator" value=""><span id="chancellorPolicy1"></span>
@@ -248,13 +255,18 @@
       </div>
 
 
-      <div class="nextRound">
-        <h4>Congrats on making it through a legeslative session, the next round is about to begin with a new president and chancellor.</h4>
+      <div class="nextRound bulletinBoard">
+        <h4>Congrats on making it through a legislative session, the next round is about to begin with a new president and chancellor.</h4>
         <button type="button" id="nextRound">Begin Next Round</button>
         <h5>Your current legislative policy total is <span id="fascistPoliciesTotal">0</span> Fascists Policies and <span id="liberalPoliciesTotal">0</span> Liberal Policies.</h5>
       </div>
 
-      <div class="executiveAction">
+      <div class="newRound bulletinBoard">
+        <h4>The vote has failed. A new President will now be assigned and a new chancellor will be up for election. You have failed to elect anyone <span id='electionsFailed'> times in a row.</span></h4>
+        <button type="button" id='newRound' name="button">Begin Next Round</button>
+      </div>
+
+      <div class="executiveAction bulletinBoard">
         <div class="topThreeCheck">
           <h4>Three fascist policies have been enacted, President you <strong>must</strong> look at the top three policy cards.</h4>
           <h4>Everyone look away from the screen except the President. President are you now alone?</h4>
@@ -274,19 +286,18 @@
 
       </div>
 
-      <div class="liberalBoardWin">
+      <div class="liberalBoardWin bulletinBoard">
         <h1>Congratulations Liberals! You have won the game and stopped fascism!</h1>
       </div>
-      <div class="liberalKillWin">
+      <div class="liberalKillWin bulletinBoard">
         <h1>Congratulations Liberals! You have won the game and stopped fascism by killing Hitler, well done!</h1>
       </div>
-      <div class="fascistBoardWin">
+      <div class="fascistBoardWin bulletinBoard">
         <h1>Congratulations Fascists! You have won the game and stopped democracy!</h1>
       </div>
-      <div class="fascistHitlerWin">
+      <div class="fascistHitlerWin bulletinBoard">
         <h1>Congratulations Fascists! You have won the game and stopped democracy by getting liberals to elect Hitler, well done!</h1>
       </div>
-    </div>
     </div>
     </div>
 
