@@ -118,5 +118,16 @@ describe ('Game', () => {
     expect(game10.drawnCardsArray).toEqual([]);
     expect(game10.deck.length).toEqual(16);
   })
-
+  test('should assign ids to the players', () =>{
+    let player1 = new Players('Thom');
+    let player2 = new Players('Bill');
+    let player3 = new Players('Sheila');
+    let player4 = new Players('Tara');
+    let player5 = new Players('George');
+    let game11 = new Game(5);
+    game11.playerOrder = [player1, player2, player3, player4, player5];
+    game11.assignNumbers();
+    console.log(game11.playerOrder);
+    expect(game11.playerOrder[0].playerNumber).toEqual('player1')
+  })
 });
