@@ -9,8 +9,6 @@ const discardArray = [];
 
 
 $(document).ready(function() {
-  $(".liberalBoard").hide();
-  $(".fascistBoard").hide();
   let game;
   let player1;
   let player2;
@@ -46,6 +44,7 @@ $(document).ready(function() {
     game = new Game(5);
     let playerArray = [player1, player2, player3, player4, player5];
     game.playerOrder = playerArray;
+    game.assignNumbers();
     game.assignParty();
     console.log(game.playerOrder);
     $("#player1Name").text(playera);
@@ -61,11 +60,11 @@ $(document).ready(function() {
     $(".affiliationCheck").show();
     $(".nameInput5").hide();
     game.firstPresident();
-    $('#player1Affiliation').text(player1.party + " " + player1.secret);
-    $('#player2Affiliation').text(player2.party + " " + player2.secret);
-    $('#player3Affiliation').text(player3.party + " " + player3.secret);
-    $('#player4Affiliation').text(player4.party + " " + player4.secret);
-    $('#player5Affiliation').text(player5.party + " " + player5.secret);
+    $('#player1Affiliation').text("Your Party Afiiliation is " + player1.party + " , Your Secret Identity is " + player1.secret + " , Your Status is " + player1.status);
+    $('#player2Affiliation').text("Your Party Afiiliation is " + player2.party + " , Your Secret Identity is " + player2.secret + " , Your Status is " + player2.status);
+    $('#player3Affiliation').text("Your Party Afiiliation is " + player3.party + " , Your Secret Identity is " + player3.secret + " , Your Status is " + player3.status);
+    $('#player4Affiliation').text("Your Party Afiiliation is " + player4.party + " , Your Secret Identity is " + player4.secret + " , Your Status is " + player4.status);
+    $('#player5Affiliation').text("Your Party Afiiliation is " + player5.party + " , Your Secret Identity is " + player5.secret + " , Your Status is " + player5.status);
     console.log(game.playerOrder);
   });
 
@@ -86,6 +85,7 @@ $(document).ready(function() {
     player6 = new Players(playerf);
     game = new Game(6);
     game.playerOrder.push(player1, player2, player3, player4, player5, player6);
+    game.assignNumbers();
     game.assignParty();
     console.log(game.playerOrder);
     $("#player1Name").text(playera);
@@ -104,12 +104,12 @@ $(document).ready(function() {
     $(".nameInput6").hide();
     game.firstPresident();
     console.log(player1.party);
-    $('#player1Affiliation').text(player1.party + " " + player1.secret);
-    $('#player2Affiliation').text(player2.party + " " + player2.secret);
-    $('#player3Affiliation').text(player3.party + " " + player3.secret);
-    $('#player4Affiliation').text(player4.party + " " + player4.secret);
-    $('#player5Affiliation').text(player5.party + " " + player5.secret);
-    $('#player6Affiliation').text(player6.party + " " + player6.secret);
+    $('#player1Affiliation').text("Your Party Afiiliation is " + player1.party + " , Your Secret Identity is " + player1.secret + " , Your Status is " + player1.status);
+    $('#player2Affiliation').text("Your Party Afiiliation is " + player2.party + " , Your Secret Identity is " + player2.secret + " , Your Status is " + player2.status);
+    $('#player3Affiliation').text("Your Party Afiiliation is " + player3.party + " , Your Secret Identity is " + player3.secret + " , Your Status is " + player3.status);
+    $('#player4Affiliation').text("Your Party Afiiliation is " + player4.party + " , Your Secret Identity is " + player4.secret + " , Your Status is " + player4.status);
+    $('#player5Affiliation').text("Your Party Afiiliation is " + player5.party + " , Your Secret Identity is " + player5.secret + " , Your Status is " + player5.status);
+    $('#player6Affiliation').text("Your Party Afiiliation is " + player6.party + " , Your Secret Identity is " + player6.secret + " , Your Status is " + player6.status);
     console.log(game.playerOrder);
   });
 
@@ -157,6 +157,15 @@ $(document).ready(function() {
     $(".selectChancellor").show();
     $('.audio').hide();
     $(".nameButton").prop("disabled", false);
+
+    for ( let i = 0; i < game.playerOrder.length; i++){
+      if (game.playerOrder[i].status === 'Previous Power' || game.playerOrder[i].status === 'President') {
+        console.log(game.playerOrder[i].playerNumber);
+        let newVar = (game.playerOrder[i].playerNumber + "Name");
+        console.log(newVar);
+      $("#" + newVar).parent().prop('disabled', true);
+      }
+    }
     $(".liberalBoard").show();
     $(".fascistBoard").show();
 
@@ -172,15 +181,16 @@ $(document).ready(function() {
     for (let i = 0; i < game.playerOrder.length; i++) {
       if (elector === game.playerOrder[i].playerNumber) {
         chancellor = game.playerOrder[i];
-        game.playerOrder[i].nominateChancellor();
+        console.log(chancellor);
+       game.playerOrder[i].nominateChancellor();
+        $(".nameButton").prop("disabled", true);
+        $(".selectChancellor").hide();
+        $('.voteButton').show();
+        $('input.voteRadio').prop('disabled', false);
+        console.log(game.playerOrder);
       }
     }
-    $(".nameButton").prop("disabled", true);
-    $(".selectChancellor").hide();
-    $('.voteButton').show();
-    $('input.voteRadio').prop('disabled', false);
-    players.nominateChancellor();
-    console.log(game.playerOrder);
+
   });
 
   $('#voteTally').click(function() {
@@ -206,17 +216,28 @@ $(document).ready(function() {
       },0);
     }
     let voteTotal = voteSum(numberArray);
-    console.log(voteSum(numberArray));
+    console.log(voteTotal);
     game.totalYesVote = voteTotal;
+    console.log(game.totalYesVote);
     if (isNaN(voteTotal)) {
       alert("Please make sure all players have voted.")
     } else {
+      chancellor.voteHandle(game);
+      if (chancellor.status === "Chancellor") {
       $(".presidentPolicyCheck").show();
       $('.voteButton').hide();
-      players.voteHandle(); //THIS IS WHERE game.playerOrder[i]. GOES//
       $('input.voteRadio').prop('checked', false);
       $('input.voteRadio').prop('disabled', true);
+      console.log(game.playerOrder);
+    } else {
+      $(".newRound").show();
+      console.log(game.playerOrder);
+      $('input.voteRadio').prop('checked', false);
+      $('input.voteRadio').prop('disabled', true);
+      $('.voteButton').hide();
     }
+    }
+
 
   })
 
@@ -282,7 +303,16 @@ $(document).ready(function() {
     $('.selectChancellor').show();
     $(".nextRound").hide();
     game.endOfRound();
+    $(".nameButton").prop("disabled", false);
     console.log(game.playerOrder);
+    for ( let i = 0; i < game.playerOrder.length; i++){
+      if (game.playerOrder[i].status === 'Previous Power' || game.playerOrder[i].status === 'President') {
+        console.log(game.playerOrder[i].playerNumber);
+        let newVar = (game.playerOrder[i].playerNumber + "Name");
+        console.log(newVar);
+      $("#" + newVar).parent().prop('disabled', true);
+      }
+    }
   });
 
 

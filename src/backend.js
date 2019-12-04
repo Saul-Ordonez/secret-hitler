@@ -3,7 +3,7 @@ export class Players {
     this.userName = userName;
     this.status = "Alive";
     this.party = "Liberal";
-    this.secret = "";
+    this.secret = "Liberal";
     this.playerNumber = '';
   }
   nominateChancellor() {
@@ -84,6 +84,7 @@ export class Game {
       }
     }
     this.playerOrder[number2].party = "Fascist";
+    this.playerOrder[number2].secret = "Fascist";
   }
   drawThreeCards(){
     this.drawnCardsArray = this.deck.splice(0,3);
@@ -124,9 +125,16 @@ export class Game {
         this.playerOrder[i].status = 'Previous Power';
       }
     }
-    this.playerOrder[0].status = 'Previous Power';
-    let prevPres = this.playerOrder.splice(0,1);
-    this.playerOrder.push(prevPres[0]);
+    if (this.electionTracker > 0 || this.players < 6) {
+      this.playerOrder[0].status = 'Alive';
+      let prevPres = this.playerOrder.splice(0,1);
+      this.playerOrder.push(prevPres[0]);
+
+    }else {
+      this.playerOrder[0].status = 'Previous Power';
+      let prevPres = this.playerOrder.splice(0,1);
+      this.playerOrder.push(prevPres[0]);
+    }
     this.playerOrder[0].status = 'President';
     if (this.deck.length < 4) {
       this.shuffleDeck();
