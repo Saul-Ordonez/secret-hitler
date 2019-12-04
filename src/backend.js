@@ -8,6 +8,7 @@ export class Players {
     this.status = "Alive";
     this.party = "Liberal";
     this.secret = "";
+    this.playerNumber = '';
   }
   nominateChancellor() {
     if (this.status === "Previous Power") {
@@ -58,6 +59,11 @@ export class Game {
 
 
   }
+  assignNumbers(){
+    for (let i = 0; i < this.playerOrder.length; i++) {
+      this.playerOrder[i].playerNumber = `player${i+1}`
+    }
+}
   shuffleDeck() {
     let isDeckShuffled = false;
     let playableCards = masterDeck.slice();
