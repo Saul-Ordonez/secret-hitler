@@ -183,12 +183,6 @@ background-color: black;
   grid-row: 2;
   width:1000px;
   height: 250px;
-  grid-template-areas:
-  "a a a a a a a a a"
-  "i b b b b b b b l"
-  "i b b b b b b b l"
-  "i b b b b b b b l"
-  "i k k k k k k k l";
   text-align: center;
 }
 
@@ -291,12 +285,9 @@ grid-area: k;
 background-color: black;
 }
 
-
-
 .voteButton {
   display: none;
 }
-
 
 .nameInput5 {
   display: none;
