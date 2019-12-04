@@ -42,6 +42,30 @@
   grid-row: 1;
 }
 
+#player1Affiliation {
+  display: none;
+}
+
+#player2Affiliation {
+  display: none;
+}
+
+#player3Affiliation {
+  display: none;
+}
+
+#player4Affiliation {
+  display: none;
+}
+
+#player5Affiliation {
+  display: none;
+}
+
+#player6Affiliation {
+  display: none;
+}
+
 
 .liberalBoard {
   display: grid;
@@ -287,5 +311,9 @@ background-color: black;
 }
 
 .fascistHitlerWin {
+  display: none;
+}
+
+.nextRound {
   display: none;
 }

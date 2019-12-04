@@ -48,67 +48,69 @@
     </div>
     <div class="gameGrid">
     <div class="player1">
-      <button class="nameButton"><span id="player1Name"></span></button>
+      <button class="nameButton" disabled><span id="player1Name"></span></button>
       <button type="button" id='player1Btn' name="affiliation">Affiliation</button>
       <p id='player1Affiliation'></p>
       <div class="vote">
         <form class="voteForm">
-          <input type="radio" name="voteResponse" value="Ja" disabled>Ja
-          <input type="radio" name="voteResponse" value="Nein" disabled>Nein
+          <div class="form-group">
+          <input type="radio" name="voteResponse1" value="Ja" disabled>Ja
+          <input type="radio" name="voteResponse1" value="Nein" disabled>Nein
+        </div>
         </div>
       </div>
 
       <div class="player2">
-        <button class="nameButton"><span id="player2Name"></span></button>
+        <button class="nameButton" disabled><span id="player2Name"></span></button>
         <button type="button" id='player2Btn' name="affiliation">Affiliation</button>
         <p id='player2Affiliation'></p>
-        <div class="vote">
-          <input type="radio" name="voteResponse" value="Ja" disabled>Ja
-          <input type="radio" name="voteResponse" value="Nein" disabled>Nein
+        <div class="form-group">
+          <input type="radio" name="voteResponse2" value="Ja" disabled>Ja
+          <input type="radio" name="voteResponse2" value="Nein" disabled>Nein
         </div>
       </div>
 
       <div class="player3">
-        <button class="nameButton"><span id="player3Name"></span></button>
+        <button class="nameButton" disabled><span id="player3Name"></span></button>
         <button type="button" id='player3Btn' name="affiliation">Affiliation</button>
         <p id='player3Affiliation'></p>
-        <div class="vote">
-          <input type="radio" name="voteResponse" value="Ja" disabled>Ja
-          <input type="radio" name="voteResponse" value="Nein" disabled>Nein
+        <div class="form-group">
+          <input type="radio" name="voteResponse3" value="Ja" disabled>Ja
+          <input type="radio" name="voteResponse3" value="Nein" disabled>Nein
         </div>
       </div>
 
       <div class="player4">
-        <button class="nameButton"><span id="player4Name"></span></button>
+        <button class="nameButton" disabled><span id="player4Name"></span></button>
         <button type="button" id='player4Btn' name="affiliation">Affiliation</button>
         <p id='player4Affiliation'></p>
-        <div class="vote">
-          <input type="radio" name="voteResponse" value="Ja" disabled>Ja
-          <input type="radio" name="voteResponse" value="Nein" disabled>Nein
+        <div class="form-group">
+          <input type="radio" name="voteResponse4" value="Ja" disabled>Ja
+          <input type="radio" name="voteResponse4" value="Nein" disabled>Nein
         </div>
       </div>
 
       <div class="player5">
-        <button class="nameButton"><span id="player5Name"></span></button>
+        <button class="nameButton" disabled><span id="player5Name"></span></button>
         <button type="button" id='player5Btn' name="affiliation">Affiliation</button>
         <p id='player5Affiliation'></p>
-        <div class="vote">
-          <input type="radio" name="voteResponse" value="Ja" disabled>Ja
-          <input type="radio" name="voteResponse" value="Nein" disabled>Nein
+        <div class="form-group">
+          <input type="radio" name="voteResponse5" value="Ja" disabled>Ja
+          <input type="radio" name="voteResponse5" value="Nein" disabled>Nein
         </div>
       </div>
 
       <div class="player6">
-        <button class="nameButton"><span id="player6Name"></span></button>
+        <button class="nameButton" disabled><span id="player6Name"></span></button>
         <button type="button" id='player6Btn' name="affiliation">Affiliation</button>
         <p id='player6Affiliation'></p>
-        <div class="vote">
-          <input type="radio" name="voteResponse" value="Ja" disabled>Ja
-          <input type="radio" name="voteResponse" value="Nein" disabled>Nein
+        <div class="form-group">
+          <input type="radio" name="voteResponse6" value="Ja" disabled>Ja
+          <input type="radio" name="voteResponse6" value="Nein" disabled>Nein
         </div>
         <div class="voteButton">
           <h4>A president and chancellor have been nominated, all players please vote now.</h4>
-          <button type="button" id="voteTally6">Tally Votes</button>
+          <button type="button" id="voteTally">Tally Votes</button>
         </div>
       </form>
       </div>
@@ -242,6 +244,12 @@
           <input type="radio" name="policyEliminator" value=""><span id="chancellorPolicy1"></span>
           <input type="radio" name="policyEliminator" value=""><span id="chancellorPolicy2"></span>
         </form>
+      </div>
+
+
+      <div class="nextRound">
+        <h4>Congrats on making it through a legeslative session, the next round is about to begin with a new president and chancellor.</h4>
+        <button type="button" id="nextRound"></button>
       </div>
 
       <div class="executiveAction">
