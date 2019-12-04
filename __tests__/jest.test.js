@@ -54,6 +54,7 @@ describe ('Game', () => {
     game6.playerOrder = [player1, player2, player3, player4, player5];
     game6.firstPresident();
     expect(game6.playerOrder[0].status==="President" || game6.playerOrder[1].status==="President" || game6.playerOrder[2].status==="President" || game6.playerOrder[3].status==="President" || game6.playerOrder[4].status==="President");
+    expect(game6.playerOrder.length).toEqual(5)
   })
   test('should nominate one player as chancellor', () => {
     let player1 = new Players('Thom');
@@ -94,6 +95,28 @@ describe ('Game', () => {
     player1.voteHandle(game9) ;
     expect(player1.status).toEqual("Chancellor");
     expect(game9.electionTracker).toEqual(0);
+  })
+  test('should clean up the end of the round', () => {
+    let player1 = new Players('Thom');
+    let player2 = new Players('Bill');
+    let player3 = new Players('Sheila');
+    let player4 = new Players('Tara');
+    let player5 = new Players('George');
+    let game10 = new Game(5);
+    game10.playerOrder = [player1, player2, player3, player4, player5];
+    game10.totalYesVote = 3;
+    game10.drawnCardsArray = ['fascist1'];
+    game10.shuffleDeck();
+    game10.deck = [1, 2, 3];
+    game10.firstPresident();
+    player3.status = 'Previous Power';
+    player2.status = 'Chancellor'
+    game10.endOfRound(game10);
+    expect(game10.playerOrder[0].status).toEqual("President");
+    expect(game10.playerOrder[4].status).toEqual("Previous Power");
+    expect(game10.totalYesVote).toEqual(0);
+    expect(game10.drawnCardsArray).toEqual([]);
+    expect(game10.deck.length).toEqual(16);
   })
 
 });

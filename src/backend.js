@@ -54,8 +54,6 @@ export class Game {
     this.liberalPolicies = 0;
     this.fascistPolicies = 0;
     this.electionTracker = 0;
-    this.currentChancellor = "";
-    this.currentPresident = "";
     this.drawnCardsArray = [];
 
 
@@ -81,7 +79,7 @@ export class Game {
     partyArray.splice[number, 1];
     let number2 = Math.floor(Math.random() * partyArray.length);
     if (number === number2) {
-      if (number2 = (this.players - 1)) {
+      if (number2 === (this.players - 1)) {
         number2 = 0;
       }else {
         number2 = number2 +1;
@@ -114,34 +112,31 @@ export class Game {
   firstPresident() {
     let number = Math.floor(Math.random() * this.playerOrder.length);
     this.playerOrder[number].status = "President";
+    let rearrange = this.playerOrder.splice(0,number);
+    this.playerOrder = this.playerOrder.concat(rearrange);
+
+  }
+  endOfRound(){
+    this.totalYesVote = 0
+    this.drawnCardsArray = [];
+    for (var i = 0; i < this.playerOrder.length; i++) {
+      if (this.playerOrder[i].status === 'Previous Power') {
+        this.playerOrder[i].status = 'Alive'
+      }
+      if (this.playerOrder[i].status === 'Chancellor') {
+        this.playerOrder[i].status = 'Previous Power'
+      }
+    }
+    this.playerOrder[0].status = 'Previous Power'
+    let prevPres = this.playerOrder.splice(0,1);
+    this.playerOrder.push(prevPres[0]);
+    this.playerOrder[0].status = 'President'
+    if (this.deck.length < 4) {
+      this.shuffleDeck();
+    }
+
   }
 }
 
 
-
-
-
-//president legistative cards from user inputs to updating main board
-
-
-
-
-//// GAMEFLOW
-
-
-/// UPKEEP
-
-// template player to the left
-
-// template inelligiblechancelors Frees up old inelligible and sets new inelligible
-
-//failed election tracker and function to enact
-
-
-// reshuffle protocol (less than three cards)
-
 //check board status for wins
-
-// clear drawn cards partyArray
-
-// Vote needs reset
