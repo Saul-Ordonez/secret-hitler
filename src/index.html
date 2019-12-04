@@ -54,8 +54,8 @@
       <div class="vote">
         <form class="voteForm">
           <div class="form-group">
-          <input type="radio" name="voteResponse1" value="Ja" disabled>Ja
-          <input type="radio" name="voteResponse1" value="Nein" disabled>Nein
+          <input class="voteRadio" type="radio" name="voteResponse1" value="1" disabled>Ja
+          <input class="voteRadio" type="radio" name="voteResponse1" value="0" disabled>Nein
         </div>
         </div>
       </div>
@@ -65,8 +65,8 @@
         <button type="button" id='player2Btn' name="affiliation">Affiliation</button>
         <p id='player2Affiliation'></p>
         <div class="form-group">
-          <input type="radio" name="voteResponse2" value="Ja" disabled>Ja
-          <input type="radio" name="voteResponse2" value="Nein" disabled>Nein
+          <input class="voteRadio" type="radio" name="voteResponse2" value="1" disabled>Ja
+          <input class="voteRadio" type="radio" name="voteResponse2" value="0" disabled>Nein
         </div>
       </div>
 
@@ -75,8 +75,8 @@
         <button type="button" id='player3Btn' name="affiliation">Affiliation</button>
         <p id='player3Affiliation'></p>
         <div class="form-group">
-          <input type="radio" name="voteResponse3" value="Ja" disabled>Ja
-          <input type="radio" name="voteResponse3" value="Nein" disabled>Nein
+          <input class="voteRadio" type="radio" name="voteResponse3" value="1" disabled>Ja
+          <input class="voteRadio" type="radio" name="voteResponse3" value="0" disabled>Nein
         </div>
       </div>
 
@@ -85,8 +85,8 @@
         <button type="button" id='player4Btn' name="affiliation">Affiliation</button>
         <p id='player4Affiliation'></p>
         <div class="form-group">
-          <input type="radio" name="voteResponse4" value="Ja" disabled>Ja
-          <input type="radio" name="voteResponse4" value="Nein" disabled>Nein
+          <input class="voteRadio" type="radio" name="voteResponse4" value="1" disabled>Ja
+          <input class="voteRadio" type="radio" name="voteResponse4" value="0" disabled>Nein
         </div>
       </div>
 
@@ -95,8 +95,8 @@
         <button type="button" id='player5Btn' name="affiliation">Affiliation</button>
         <p id='player5Affiliation'></p>
         <div class="form-group">
-          <input type="radio" name="voteResponse5" value="Ja" disabled>Ja
-          <input type="radio" name="voteResponse5" value="Nein" disabled>Nein
+          <input class="voteRadio" type="radio" name="voteResponse5" value="1" disabled>Ja
+          <input class="voteRadio" type="radio" name="voteResponse5" value="0" disabled>Nein
         </div>
       </div>
 
@@ -105,15 +105,15 @@
         <button type="button" id='player6Btn' name="affiliation">Affiliation</button>
         <p id='player6Affiliation'></p>
         <div class="form-group">
-          <input type="radio" name="voteResponse6" value="Ja" disabled>Ja
-          <input type="radio" name="voteResponse6" value="Nein" disabled>Nein
+          <input class="voteRadio" type="radio" name="voteResponse6" value="1" disabled>Ja
+          <input class="voteRadio" type="radio" name="voteResponse6" value="0" disabled>Nein
         </div>
+      </div>
         <div class="voteButton">
           <h4>A president and chancellor have been nominated, all players please vote now.</h4>
           <button type="button" id="voteTally">Tally Votes</button>
         </div>
-      </form>
-      </div>
+    </form>
       <div class="gameGrid">
 
       <div class="liberalBoard">
@@ -220,6 +220,7 @@
 
 
       <div class="presidentPolicyCheck">
+        <h3>Congratulations on a successful election, you have had <span id="electionTrack">0</span> failed elections in a row.</h3>
         <h4>Everyone look away from the screen except the President. President are you now alone?</h4>
         <button type="button" id="presidentVerifyButton">Yes I'm alone</button>
       </div>
@@ -249,7 +250,8 @@
 
       <div class="nextRound">
         <h4>Congrats on making it through a legeslative session, the next round is about to begin with a new president and chancellor.</h4>
-        <button type="button" id="nextRound"></button>
+        <button type="button" id="nextRound">Begin Next Round</button>
+        <h5>Your current legislative policy total is <span id="fascistPoliciesTotal">0</span> Fascists Policies and <span id="liberalPoliciesTotal">0</span> Liberal Policies.</h5>
       </div>
 
       <div class="executiveAction">

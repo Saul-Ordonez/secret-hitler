@@ -42,6 +42,14 @@
   grid-row: 1;
 }
 
+.gameGrid .liberalBoard {
+  display: inherit;
+}
+
+.gameGrid .fascistBoard {
+  display: inherit;
+}
+
 #player1Affiliation {
   display: none;
 }
