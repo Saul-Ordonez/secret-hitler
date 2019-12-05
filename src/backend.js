@@ -32,7 +32,7 @@ export class Players {
     for (let i = 0; i < gameObject.playerOrder.length; i++) {
       if (gameObject.playerOrder[i].userName === this.userName) {
         gameObject.playerOrder.splice(i, 1);
-        gameObject.players --;
+        gameObject.players - 1;
         // Possible Frontend hitler status shot or chancellor with 3 cards in Fasc
       }
     }
@@ -50,7 +50,8 @@ export class Game {
     this.electionTracker = 0;
     this.drawnCardsArray = [];
     this.masterDeck = ['fascist1','fascist2','fascist3','fascist4','fascist5','fascist6','fascist7','fascist8','fascist9','fascist10','fascist11','liberal1','liberal2','liberal3','liberal4','liberal5','liberal6'];
-    this.hitler = ''
+    this.hitler = '';
+    this.executiveActionsTaken = 0;
   }
   assignNumbers(){
     for (let i = 0; i < this.playerOrder.length; i++) {
