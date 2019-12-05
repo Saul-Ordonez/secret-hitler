@@ -20,37 +20,22 @@ body {
   display: none;
 }
 
-[type=radio] {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-[type=radio]:checked {
-  position: sticky;
-  z-index: +1;
-  border: 4px solid #009933;
-}
-
 label.jaLabel {
   background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2045%20PM.jpg?raw=true);
-  transform: rotate(90deg);
   background-position: block;
-  background-size: 70px 100px;
+  background-size: 100px 60px;
   background-repeat: no-repeat;
-  width: 70px;
-  height: 100px;
+  width: 100px;
+  height: 60px;
 }
 
 label.neinLabel {
   background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2036%20PM.jpg?raw=true);
-  transform: rotate(90deg);
   background-position: block;
-  background-size: 70px 100px;
+  background-size: 100px 60px;
   background-repeat: no-repeat;
-  width: 70px;
-  height: 100px;
+  width: 100px;
+  height: 60px;
 }
 
 .player2 {
@@ -137,7 +122,6 @@ label.neinLabel {
   "i k k k k k l";
   grid-template-rows: 1fr 3fr 1fr;
   grid-template-columns: 3fr 3fr 3fr 3fr 3fr 3fr 3fr ;
-
 }
 
 .liberalBoard > .blueBoarder {
