@@ -1,3 +1,7 @@
+body {
+  background-color: #f2654b;
+}
+
 .newRound {
   display: none;
 }
@@ -10,7 +14,10 @@
 }
 
 .jumbotron {
-  text-align: center;
+  display: block;
+  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2017%2029%20PM.jpg?raw=true);
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .player1 {
@@ -128,6 +135,22 @@
   background-color: red;
   border: solid;
   border-color: silver;
+}
+
+.libPic {
+  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2024%20PM.jpg?raw=true);
+}
+
+.fascPic {
+  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2059%20PM.jpg?raw=true);
+}
+
+.jaPic {
+  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2045%20PM.jpg?raw=true);
+}
+
+.neinPic {
+  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2036%20PM.jpg?raw=true);
 }
 
 .liberalBoard > .secondLib {
