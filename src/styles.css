@@ -2,17 +2,6 @@ body {
   background-color: #f2654b;
 }
 
-.newRound {
-  display: none;
-}
-
-.gameGrid {
-  display: grid;
-  grid-gap: 1rem;
-  grid-template-columns: auto auto auto;
-  grid-template-rows: auto auto auto;
-}
-
 .jumbotron {
   display: block;
   background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2017%2029%20PM.jpg?raw=true);
@@ -27,11 +16,52 @@ body {
   height: 250;
 }
 
+#player1Affiliation {
+  display: none;
+}
+
+[type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+[type=radio]:checked {
+  position: sticky;
+  z-index: +1;
+  border: 4px solid #009933;
+}
+
+label.jaLabel {
+  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2045%20PM.jpg?raw=true);
+  transform: rotate(90deg);
+  background-position: block;
+  background-size: 70px 100px;
+  background-repeat: no-repeat;
+  width: 70px;
+  height: 100px;
+}
+
+label.neinLabel {
+  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2036%20PM.jpg?raw=true);
+  transform: rotate(90deg);
+  background-position: block;
+  background-size: 70px 100px;
+  background-repeat: no-repeat;
+  width: 70px;
+  height: 100px;
+}
+
 .player2 {
   display: none;
   grid-column: 3;
   grid-row: 2;
   height: 250;
+}
+
+#player2Affiliation {
+  display: none;
 }
 
 .player3 {
@@ -41,11 +71,19 @@ body {
   height: 250;
 }
 
+#player3Affiliation {
+  display: none;
+}
+
 .player4 {
   display: none;
   grid-column: 1;
   grid-row: 3;
   height: 250;
+}
+
+#player4Affiliation {
+  display: none;
 }
 
 .player5 {
@@ -55,12 +93,26 @@ body {
   height: 250;
 }
 
+#player5Affiliation {
+  display: none;
+}
 
 .player6 {
   display: none;
   grid-column: 1;
   grid-row: 1;
   height: 250;
+}
+
+#player6Affiliation {
+  display: none;
+}
+
+.gameGrid {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 3fr auto 3fr;
+  grid-template-rows: auto auto auto;
 }
 
 .gameGrid .liberalBoard {
@@ -70,31 +122,6 @@ body {
 .gameGrid .fascistBoard {
   display: inherit;
 }
-
-#player1Affiliation {
-  display: none;
-}
-
-#player2Affiliation {
-  display: none;
-}
-
-#player3Affiliation {
-  display: none;
-}
-
-#player4Affiliation {
-  display: none;
-}
-
-#player5Affiliation {
-  display: none;
-}
-
-#player6Affiliation {
-  display: none;
-}
-
 
 .liberalBoard {
   display: grid;
@@ -126,23 +153,10 @@ body {
 .liberalBoard > .firstLib {
   text-align: center;
   grid-area: d;
-    background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2024%20PM.jpg?raw=true);
-    background-size: contain;
-    background-repeat: no-repeat;
-    display: none;
-}
-
-
-.fascPic {
-  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2059%20PM.jpg?raw=true);
-}
-
-.jaPic {
-  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2045%20PM.jpg?raw=true);
-}
-
-.neinPic {
-  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2036%20PM.jpg?raw=true);
+  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2024%20PM.jpg?raw=true);
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: none;
 }
 
 .liberalBoard > .secondLib {
@@ -153,6 +167,7 @@ body {
   background-repeat: no-repeat;
   display: none;
 }
+
 .liberalBoard > .thirdLib {
   text-align: center;
   grid-area: f;
@@ -178,15 +193,17 @@ body {
   background-repeat: no-repeat;
   display: none;
 }
+
 .liberalBoard > .blackLibSideL {
-grid-area: i;
+  grid-area: i;
 }
+
 .liberalBoard > .blackLibSideR {
-grid-area: l;
+  grid-area: l;
 }
 
 .liberalBoard > .blackLibBottom {
-grid-area: k;
+  grid-area: k;
 }
 
 .bulletinBoard {
@@ -256,6 +273,7 @@ grid-area: k;
   background-position: center;
   display: none;
 }
+
 .fascistBoard > .fourthFas {
   grid-area: g;
   text-align: center;
@@ -285,21 +303,17 @@ grid-area: k;
   background-position: center;
   display: none;
 }
+
 .fascistBoard > .blackFasSideL {
-grid-area: i;
-}
-.fascistBoard > .blackFasSideR {
-grid-area: l;
-}
-.fascistBoard > .redSideL {
-grid-area: j;
+  grid-area: i;
 }
 
-.fascistBoard > .redSideR {
-grid-area: m;
+.fascistBoard > .blackFasSideR {
+  grid-area: l;
 }
+
 .fascistBoard > .blackFasBottom {
-grid-area: k;
+  grid-area: k;
 }
 
 .voteButton {
@@ -369,6 +383,15 @@ grid-area: k;
 .newRound {
   display: none;
 }
+
 #closeTopThree {
   display: none;
+}
+
+.jaPic {
+  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2045%20PM.jpg?raw=true);
+}
+
+.neinPic {
+  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2036%20PM.jpg?raw=true);
 }
