@@ -132,9 +132,6 @@ body {
     display: none;
 }
 
-.libPic {
-  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2024%20PM.jpg?raw=true);
-}
 
 .fascPic {
   background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2059%20PM.jpg?raw=true);
@@ -235,28 +232,58 @@ grid-area: k;
 
 .fascistBoard > .firstFas {
   grid-area: d;
+  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2059%20PM.jpg?raw=true);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: none;
 }
 
 .fascistBoard > .secondFas {
   grid-area: e;
+  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2059%20PM.jpg?raw=true);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: none;
 }
 .fascistBoard > .thirdFas {
   grid-area: f;
   text-align: center;
+  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2059%20PM.jpg?raw=true);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: none;
 }
 .fascistBoard > .fourthFas {
   grid-area: g;
   text-align: center;
+  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2059%20PM.jpg?raw=true);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: none;
 }
 
 .fascistBoard > .fifthFas {
-grid-area: h;
-text-align: center;
+  grid-area: h;
+  text-align: center;
+  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2059%20PM.jpg?raw=true);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: none;
 }
 
 .fascistBoard > .sixthFas {
-grid-area: n;
-text-align: center;
+  grid-area: n;
+  text-align: center;
+  background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2059%20PM.jpg?raw=true);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: none;
 }
 .fascistBoard > .blackFasSideL {
 grid-area: i;
