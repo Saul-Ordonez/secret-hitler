@@ -384,3 +384,7 @@ label.neinLabel {
 .neinPic {
   background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2036%20PM.jpg?raw=true);
 }
+
+.chaos {
+  display: none;
+}

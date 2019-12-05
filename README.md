@@ -6,7 +6,18 @@
 
 ## Description / Rules
 
-<!-- This webpage application will allow users input their age in years and return a result of their age in years according to the solar orbit of all planets in the solar system. -->
+Secret Hitler sees players divided into two teams: the liberals and the fascists, the latter also including the Hitler role. The identity of Hitler is known to all other fascists, while the identities of the fascists are unknown to Hitler in games with at least seven players. The role distribution depends on the number of players in a game session:
+
+At the start of each round, the player to the left of the previous President becomes the new president (the first president is chosen randomly). The President nominates a candidate for the Chancellorship, and every player, including the proposed government, votes either "Ja!" (yes) or "Nein!" (no) to the proposal. If more than half of the players vote for the Chancellor-candidate, the player is granted the office. If successful, following the election, the President blindly draws three policy cards, each of which could be liberal or fascist, of which two are handed to the Chancellor, who in turn selects which of these will be passed and enacted.
+
+If the Chancellor election is unsuccessful, the Election Tracker is counted up by one and the round ends immediately, passing on the Presidential role for a new election. Once three elections have failed in a row, the policy on top of the draw pile is enacted without oversight by the present President or Chancellor, and the Election Tracker is reset. The Election Tracker is also reset if a Chancellor is elected.
+
+While enacting a liberal policy will have no direct effect on the game, passing a fascist law may grant the President the possibility to investigate a player's party membership, check the three top cards of the deck, assassinate a player, or choose the next round's President.
+
+The game ends when either five liberal policies or six fascist policies have been enacted, with the respective party winning the game. Additionally, after three fascist policies have been passed, the liberals can win the game if Hitler is assassinated or the fascists can win if Hitler is elected Chancellor.
+
+**You can find a list of rules of play for Secret Hitler in the link provided.
+https://secrethitler.com/assets/Secret_Hitler_Rules.pdf**
 
 ## Specs
 
@@ -49,7 +60,7 @@ This project was tested and works with Google Chrome browser.
 
 ## Known Bugs
 
-<!-- There are no known bugs at this time but may be subject to change. -->
+There are no known bugs at this time but may be subject to change.
 
 ## Support and contact details
 
@@ -70,6 +81,10 @@ If there are any issues or bugs the developer may not be aware of please contact
 * Google Chrome
 
 ### License
+
+**This project was created with the permission of GOAT, WOLF, & CABBAGE under the Creative Commons License. If you have any questions regarding the details of this license please refer to the link below.
+
+https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode**
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
