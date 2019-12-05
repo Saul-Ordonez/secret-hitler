@@ -25,31 +25,13 @@ body {
   display: none;
 }
 
-<<<<<<< HEAD
-=======
-
-
-/* [type=radio] {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-} */
-
-/* [type=radio]:checked {
-  position: sticky;
-  z-index: +1;
-  border: 4px solid #009933;
-} */
-
->>>>>>> b36216c043b1f9242985fdeb3cb7452a0d404a19
 label.jaLabel {
   background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2045%20PM.jpg?raw=true);
   background-position: block;
-  background-size: 70px 100px;
+  background-size: 100px 60px ;
   background-repeat: no-repeat;
-  width: 70px;
-  height: 100px;
+  width: 100px;
+  height: 60px;
 }
 
 label.neinLabel {
