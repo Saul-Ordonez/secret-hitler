@@ -9,6 +9,11 @@ body {
   margin-left: auto;
 }
 
+.playerNum {
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
 .player1 {
   display: none;
   grid-column: 3;
