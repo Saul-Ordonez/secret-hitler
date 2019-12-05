@@ -50,6 +50,7 @@ export class Game {
     this.electionTracker = 0;
     this.drawnCardsArray = [];
     this.masterDeck = ['fascist1','fascist2','fascist3','fascist4','fascist5','fascist6','fascist7','fascist8','fascist9','fascist10','fascist11','liberal1','liberal2','liberal3','liberal4','liberal5','liberal6'];
+    this.hitler = ''
   }
   assignNumbers(){
     for (let i = 0; i < this.playerOrder.length; i++) {
@@ -74,6 +75,8 @@ export class Game {
     let number = Math.floor(Math.random() * partyArray.length);
     this.playerOrder[number].party = "Fascist";
     this.playerOrder[number].secret = "Hitler";
+    this.hitler = this.playerOrder[number]
+    console.log(this.hitler);
     partyArray.splice[number, 1];
     let number2 = Math.floor(Math.random() * partyArray.length);
     if (number === number2) {

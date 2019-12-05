@@ -8,6 +8,7 @@
     <div class="jumbotron">
       <h1>Secret Hitler</h1>
     </div>
+    <div class="gameGrid">
     <div class="playerNum bulletinBoard">
       <h2>Please select number of players</h2>
       <button type="button" id="5players">5</button>
@@ -47,7 +48,6 @@
         <button type="submit" class="nameSubmit6">Submit</button>
       </form>
     </div>
-    <div class="gameGrid">
     <div class="player1">
       <button class="nameButton" disabled><span id="player1Name"></span></button>
       <button type="button" id='player1Btn' name="affiliation">Affiliation</button>
@@ -276,6 +276,7 @@
           <span id="policy1"></span>
           <span id="policy2"></span>
           <span id="policy3"></span>
+          <button type='button' id='closeTopThree'>Put Cards Back</button>
         </div>
         <div class="killFirstPlayer">
           <h4>Three fascist policies have been enacted, President you <strong>must</strong> select a player to kill by clicking on one of the other players names.</h4>
@@ -285,6 +286,8 @@
         </div>
 
       </div>
+    </div>
+    <div class="gameEnd">
 
       <div class="liberalBoardWin bulletinBoard">
         <h1>Congratulations Liberals! You have won the game and stopped fascism!</h1>
@@ -299,7 +302,7 @@
         <h1>Congratulations Fascists! You have won the game and stopped democracy by getting liberals to elect Hitler, well done!</h1>
       </div>
     </div>
-    </div>
+  </div>
 
   </body>
   </html>

@@ -48,7 +48,6 @@ $(document).ready(function() {
     game.playerOrder = playerArray;
     game.assignNumbers();
     game.assignParty();
-    console.log(game.playerOrder);
     $("#player1Name").text(playera);
     $("#player2Name").text(playerb);
     $("#player3Name").text(playerc);
@@ -63,6 +62,7 @@ $(document).ready(function() {
     $(".nameInput5").hide();
     game.firstPresident();
     playerTextUpdate();
+    console.log(game.playerOrder);
   });
 
 
@@ -195,6 +195,28 @@ $(document).ready(function() {
 
   });
 
+  $("button.shoot").click(function(){
+    console.log('shoot clicked');
+    let mouse = $(this).parent();
+    let shooter = (mouse[0].className);
+    for (let i = 0; i < game.playerOrder.length; i++) {
+      if (shooter === game.playerOrder[i].playerNumber) {
+        game.playerOrder[i].shootPlayer();
+        if (game.playerOrder[i].secret === 'Hitler') {
+          $(".liberalKillWin").show();
+          $(".gameGrid").hide();
+
+        }
+        $("." + shooter).parent().hide();
+      }
+    }
+    $("button.shoot").classList.toggle("nameButton");
+    $(".nextRound").show();
+    $(".killFirstPlayer").hide();
+    (".killSecondPlayer").hide();
+
+  });
+
   $('#voteTally').click(function() {
     let numberArray = [];
     let vote1 = $('input[name=voteResponse1]:checked').val();
@@ -226,6 +248,7 @@ $(document).ready(function() {
     } else {
       chancellor.voteHandle(game);
       if (chancellor.status === "Chancellor") {
+      winCheck();
       $(".presidentPolicyCheck").show();
       $('.voteButton').hide();
       $('input.voteRadio').prop('checked', false);
@@ -314,10 +337,12 @@ $(document).ready(function() {
     } else {
       game.drawnCardsArray.splice(1, 1);
     }
+    $(".nextRound").show();
     game.cardPlayedOnBoard();
+    executiveAction();
+    winCheck();
     $(".chancellorPolicyElimination").hide();
     //THIS IS WHERE WE SHOW THE CARD ON THE BOARD///
-    $(".nextRound").show();
     $("#fascistPoliciesTotal").text(game.fascistPolicies)
     $("#liberalPoliciesTotal").text(game.liberalPolicies)
   });
@@ -341,7 +366,47 @@ $(document).ready(function() {
     }
   });
 
+function winCheck(){
+  //MAYBE SPLIT UP
+  if(game.fascistPolicies > 2 && chancellor.secret === 'Hitler'){
+    $(".gameGrid").hide();
+    $(".fascistHitlerWin").show();
+  }else if (game.hitler.status === 'Dead') {
+    $(".gameGrid").hide();
+    $(".liberalKillWin").show();
+  }else if (game.fascistPolicies === 6) {
+    $(".gameGrid").hide();
+    $(".fascistBoardWin").show();
+  }else if (game.liberalPolicies === 5) {
+    $(".gameGrid").hide();
+  $(".liberalBoardWin").show();
 
+  }
+}
+$("button#executivePolicyCheck").click(function(){
+  $("#policy1").text(game.drawnCardsArray[0])
+  $("#policy2").text(game.drawnCardsArray[1])
+  $("#policy3").text(game.drawnCardsArray[2])
+})
+$("button#closeTopThree").click(function(){
+  $('.executiveAction').hide();
+  $('.nextRound').show();
+})
+function executiveAction(){
+  if(game.fascistPolicies === 3){
+    $(".topThreeCheck").show()
+    game.lookTop3();
+  }else if (game.fascistPolicies === 4) {
+ $("button.nameButton").classList.toggle("shoot");
+ //DOESNT WORK AFFECTS OTHER PARTS OF THE GAME
+ $(".killFirstPlayer").show();
+ $('.nextRound').hide();
+  }else if (game.fascistPolicies === 5) {
+    $("button.nameButton").classList.toggle("shoot");
+    $(".killSecondPlayer").show();
+    $('.nextRound').hide();
+  }
+}
 
 
 });
