@@ -23,14 +23,14 @@ export class Players {
       if (gameObject.electionTracker === 3) {
         gameObject.drawnCardsArray = gameObject.deck.splice(0,1);
         gameObject.cardPlayedOnBoard();
-        gameObject.electionTracker = 0;
+
       }
     }
   }
   shootPlayer(gameObject) {
     this.status = "Dead";
     for (let i = 0; i < gameObject.playerOrder.length; i++) {
-      if (gameObject.playerOrder[i].userName === this.userName) {
+      if ( this.playerNumber === gameObject.playerOrder[i].playerNumber) {
         gameObject.playerOrder.splice(i, 1);
         gameObject.players - 1;
         // Possible Frontend hitler status shot or chancellor with 3 cards in Fasc
