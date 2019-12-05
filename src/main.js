@@ -21,6 +21,7 @@ $(document).ready(function() {
   let player5;
   let player6;
   let elector;
+  let shooter;
   let chancellor;
   let delete1;
   let delete2;
@@ -108,16 +109,16 @@ $(document).ready(function() {
     console.log(game.playerOrder);
     playerTextUpdate();
   });
- function playerTextUpdate (){
-  $('#player1Affiliation').text("Your Party Afiiliation is " + player1.party + " , Your Secret Identity is " + player1.secret + " , Your Status is " + player1.status);
-  $('#player2Affiliation').text("Your Party Afiiliation is " + player2.party + " , Your Secret Identity is " + player2.secret + " , Your Status is " + player2.status);
-  $('#player3Affiliation').text("Your Party Afiiliation is " + player3.party + " , Your Secret Identity is " + player3.secret + " , Your Status is " + player3.status);
-  $('#player4Affiliation').text("Your Party Afiiliation is " + player4.party + " , Your Secret Identity is " + player4.secret + " , Your Status is " + player4.status);
-  $('#player5Affiliation').text("Your Party Afiiliation is " + player5.party + " , Your Secret Identity is " + player5.secret + " , Your Status is " + player5.status);
-  if (game.players === 6) {
-    $('#player6Affiliation').text("Your Party Afiiliation is " + player6.party + " , Your Secret Identity is " + player6.secret + " , Your Status is " + player6.status);
+  function playerTextUpdate (){
+    $('#player1Affiliation').text("Your Party Afiiliation is " + player1.party + " , Your Secret Identity is " + player1.secret + " , Your Status is " + player1.status);
+    $('#player2Affiliation').text("Your Party Afiiliation is " + player2.party + " , Your Secret Identity is " + player2.secret + " , Your Status is " + player2.status);
+    $('#player3Affiliation').text("Your Party Afiiliation is " + player3.party + " , Your Secret Identity is " + player3.secret + " , Your Status is " + player3.status);
+    $('#player4Affiliation').text("Your Party Afiiliation is " + player4.party + " , Your Secret Identity is " + player4.secret + " , Your Status is " + player4.status);
+    $('#player5Affiliation').text("Your Party Afiiliation is " + player5.party + " , Your Secret Identity is " + player5.secret + " , Your Status is " + player5.status);
+    if (game.players === 6) {
+      $('#player6Affiliation').text("Your Party Afiiliation is " + player6.party + " , Your Secret Identity is " + player6.secret + " , Your Status is " + player6.status);
+    }
   }
-}
   //affiliation button needs object information from backend//
 
 
@@ -168,7 +169,7 @@ $(document).ready(function() {
         console.log(game.playerOrder[i].playerNumber);
         let newVar = (game.playerOrder[i].playerNumber + "Name");
         console.log(newVar);
-      $("#" + newVar).parent().prop('disabled', true);
+        $("#" + newVar).parent().prop('disabled', true);
       }
     }
     $(".liberalBoard").show();
@@ -187,8 +188,8 @@ $(document).ready(function() {
       if (elector === game.playerOrder[i].playerNumber) {
         chancellor = game.playerOrder[i];
         console.log(chancellor);
-       game.playerOrder[i].nominateChancellor();
-       playerTextUpdate();
+        game.playerOrder[i].nominateChancellor();
+        playerTextUpdate();
         $(".nameButton").prop("disabled", true);
         $(".selectChancellor").hide();
         $('.voteButton').show();
@@ -203,20 +204,22 @@ $(document).ready(function() {
     event.preventDefault();
     console.log('shoot clicked');
     let mouse = $(this).parent();
-    let shooter = (mouse[0].className);
+    console.log(mouse);
+    shooter = (mouse[0].className);
     for (let i = 0; i < game.playerOrder.length; i++) {
       if (shooter === game.playerOrder[i].playerNumber) {
+        let deadGuy = game.playerOrder[i];
         console.log(shooter);
         console.log(game.playerOrder[i]);
         console.log(game.playerOrder[i].secret);
         if (game.playerOrder[i].secret === "Hitler") {
           $(".liberalKillWin").show();
           $(".gameGrid").hide();
-
         } else {
           console.log(shooter);
           $("." + shooter).hide();
-          game.playerOrder[i].shootPlayer(game);
+          deadGuy.shootPlayer(game);
+          console.log(game.playerOrder);
           $("#fascistPoliciesTotal").text(game.fascistPolicies)
           $("#liberalPoliciesTotal").text(game.liberalPolicies)
 
@@ -265,32 +268,57 @@ $(document).ready(function() {
     console.log(voteTotal);
     game.totalYesVote = voteTotal;
     console.log(game.totalYesVote);
-    if (game.playerOrder.length !== voteArray.length) {
+    if (numberArray.length !== voteArray.length) {
       alert("Please make sure all players have voted.")
     } else {
       chancellor.voteHandle(game);
       if (chancellor.status === "Chancellor") {
-      winCheck();
-      $(".presidentPolicyCheck").show();
-      $('.voteButton').hide();
-      $('input.voteRadio').prop('checked', false);
-      $('input.voteRadio').prop('disabled', true);
-      console.log(game.playerOrder);
-      playerTextUpdate();
-    } else {
-      $(".newRound").show();
-      console.log(game.playerOrder);
-      $('input.voteRadio').prop('checked', false);
-      $('input.voteRadio').prop('disabled', true);
-      $('.voteButton').hide();
-      $('.newRound').show();
-    }
+        chancellorWin();
+        $(".presidentPolicyCheck").show();
+        $('.voteButton').hide();
+        $('input.voteRadio').prop('checked', false);
+        $('input.voteRadio').prop('disabled', true);
+        console.log(game.playerOrder);
+        playerTextUpdate();
+      } else {
+        boardLoad();
+        console.log(game.executiveActionsTaken);
+        console.log(game.fascistPolicies);
+        // if (game.electionTracker === 3) {
+        //   console.log(game.electionTracker);
+        //   game.electionTracker = 0;
+        //   $(".chaos").show();
+        //   // if (game.executiveActionsTaken === 0 && game.fascistPolicies === 3){
+        //   //   game.lookTop3()
+        //   //   $(".executiveAction").show();
+        //   //   $(".killFirstPlayer").hide();
+        //   //   $(".killSecondPlayer").hide();
+        //   //   $(".topThreeCheck").show();
+        //   //   $(".chaos").hide();
+        //   //   $(".newRound").hide();
+        //   //   $('.voteButton').hide();
+        //   //   $("#fascistPoliciesTotal").text(game.fascistPolicies)
+        //   //   $("#liberalPoliciesTotal").text(game.liberalPolicies)
+        //   // }
+        // } else {
+          $(".newRound").show();
+          $("#electionsFailed").text(game.electionTracker);
+          console.log(game.electionTracker);
+          $(".chaos").hide();
+          console.log(game.playerOrder);
+          $('input.voteRadio').prop('checked', false);
+          $('input.voteRadio').prop('disabled', true);
+          $('.voteButton').hide();
+        // }
+
+      }
     }
 
 
   })
 
   $('button#newRound').click(function() {
+    $(".chaos").hide();
     $(".newRound").hide();
     $('.selectChancellor').show();
     game.endOfRound();
@@ -302,7 +330,7 @@ $(document).ready(function() {
         console.log(game.playerOrder[i].playerNumber);
         let newVar = (game.playerOrder[i].playerNumber + "Name");
         console.log(newVar);
-      $("#" + newVar).parent().prop('disabled', true);
+        $("#" + newVar).parent().prop('disabled', true);
       }
     }
   })
@@ -343,6 +371,34 @@ $(document).ready(function() {
 
   });
 
+  function boardLoad() {
+    if(game.liberalPolicies === 1) {
+      $(".firstLib").show();
+    } else if (game.liberalPolicies === 2) {
+      $(".secondLib").show();
+    } else if (game.liberalPolicies === 3) {
+      $(".thirdLib").show();
+    } else if (game.liberalPolicies === 4) {
+      $(".fourthLib").show();
+    } else if(game.liberalPolicies === 5) {
+      $(".fifthLib").show();
+    }
+    if(game.fascistPolicies === 1) {
+      $(".firstFas").show();
+    } else if (game.fascistPolicies === 2) {
+      $(".secondFas").show();
+    } else if (game.fascistPolicies === 3) {
+      $(".thirdFas").show();
+    } else if (game.fascistPolicies === 4) {
+      $(".fourthFas").show();
+    } else if(game.fascistPolicies === 5) {
+      $(".fifthFas").show();
+    } else if(game.fascistPolicies === 6) {
+      $(".sixthFas").show();
+    }
+
+  }
+
   $("#chancellorVerifyButton").click(function() {
     $("#chancellorPolicy1").text(game.drawnCardsArray[0]);
     $("#chancellorPolicy2").text(game.drawnCardsArray[1]);
@@ -360,6 +416,8 @@ $(document).ready(function() {
       game.drawnCardsArray.splice(1, 1);
     }
     game.cardPlayedOnBoard();
+    boardLoad();
+    $(".nextRound").show();
     $(".chancellorPolicyElimination").hide();
     if (game.fascistPolicies === 3) {
       if (game.executiveActionsTaken === 1) {
@@ -368,6 +426,9 @@ $(document).ready(function() {
         $("#fascistPoliciesTotal").text(game.fascistPolicies)
         $("#liberalPoliciesTotal").text(game.liberalPolicies)
       }else {
+        $(".voteButton").hide();
+        $(".nextRound").hide();
+        $(".executiveAction").show();
         top3Peak();
       }
     }else if (game.fascistPolicies === 4) {
@@ -386,26 +447,37 @@ $(document).ready(function() {
         shootFirstPlayer();
 
       }
-    }else if (game.fascistPolice === 5) {
+    }else if (game.fascistPolicies === 5) {
       if (game.executiveActionsTaken === 3) {
         $(".nextRound").show();
         //THIS IS WHERE WE SHOW THE CARD ON THE BOARD///
         $("#fascistPoliciesTotal").text(game.fascistPolicies)
         $("#liberalPoliciesTotal").text(game.liberalPolicies)
+
       }else {
+        console.log('should meet 5 eah');
+        $("button.nameButton").addClass("shoot");
+        $("button.shoot").removeClass("nameButton");
+        $(".voteButton").hide();
+        $(".nextRound").hide();
+        $(".executiveAction").show();
         shootSecondPlayer();
       }
     }
+    $("#fascistPoliciesTotal").text(game.fascistPolicies)
+    $("#liberalPoliciesTotal").text(game.liberalPolicies)
+    playerTextUpdate();
+
     winCheck();
   });
 
   $("button#nextRound").click(function() {
+    game.endOfRound();
     $('.selectChancellor').show();
     $(".nextRound").hide();
-    game.endOfRound();
     playerTextUpdate();
-    delete1.show();
-    delete2.show();
+    // delete1.show();
+    // delete2.show();
     $(".nameButton").prop("disabled", false);
     console.log(game.playerOrder);
     for ( let i = 0; i < game.playerOrder.length; i++){
@@ -413,39 +485,45 @@ $(document).ready(function() {
         console.log(game.playerOrder[i].playerNumber);
         let newVar = (game.playerOrder[i].playerNumber + "Name");
         console.log(newVar);
-      $("#" + newVar).parent().prop('disabled', true);
+        $("#" + newVar).parent().prop('disabled', true);
       }
     }
   });
 
-function winCheck(){
-  //MAYBE SPLIT UP
-  if(game.fascistPolicies > 2 && chancellor.secret === 'Hitler'){
-    $(".gameGrid").hide();
-    $(".fascistHitlerWin").show();
-  }else if (game.hitler.status === 'Dead') {
-    $(".gameGrid").hide();
-    $(".liberalKillWin").show();
-  }else if (game.fascistPolicies === 6) {
-    $(".gameGrid").hide();
-    $(".fascistBoardWin").show();
-  }else if (game.liberalPolicies === 5) {
-    $(".gameGrid").hide();
-  $(".liberalBoardWin").show();
 
+  function chancellorWin() {
+    if(game.fascistPolicies >= 3 && chancellor.secret === 'Hitler'){
+      $(".gameGrid").hide();
+      $(".fascistHitlerWin").show();
+    }
   }
-}
-$("button#executivePolicyCheck").click(function(){
-  $("#policy1").text(game.drawnCardsArray[0])
-  $("#policy2").text(game.drawnCardsArray[1])
-  $("#policy3").text(game.drawnCardsArray[2])
-  $("#closeTopThree").show();
-})
-$("button#closeTopThree").click(function(){
-  $('.executiveAction').hide();
-  $('.nextRound').show();
-})
-function top3Peak(){
+
+  function winCheck(){
+    //MAYBE SPLIT UP
+
+    if (game.hitler.status === 'Dead') {
+      $(".gameGrid").hide();
+      $(".liberalKillWin").show();
+    }else if (game.fascistPolicies === 6) {
+      $(".gameGrid").hide();
+      $(".fascistBoardWin").show();
+    }else if (game.liberalPolicies === 5) {
+      $(".gameGrid").hide();
+      $(".liberalBoardWin").show();
+
+    }
+  }
+  $("button#executivePolicyCheck").click(function(){
+    $("#policy1").text(game.drawnCardsArray[0])
+    $("#policy2").text(game.drawnCardsArray[1])
+    $("#policy3").text(game.drawnCardsArray[2])
+    $("#closeTopThree").show();
+  })
+  $("button#closeTopThree").click(function(){
+    $('.executiveAction').hide();
+    $('.nextRound').show();
+  })
+  function top3Peak(){
     console.log('3 fasc branch');
     game.lookTop3();
     $(".executiveAction").show()
@@ -455,37 +533,38 @@ function top3Peak(){
     $('.killSecondPlayer').hide();
     game.executiveActionsTaken ++;
 
-}
-$("#cheatButton").click(function(){
-  game.fascistPolicies ++
-})
+  }
+  $("#cheatButton").click(function(){
+    game.fascistPolicies ++
+  })
 
-//    SOME MORE SHOWING/HIDING NEEDS TO BE DONE BUT I THINK THIS WORKS FOR THE MOST PART
-function shootFirstPlayer(){
-  $(".shoot").prop("disabled", false);
-  let newVar = (game.playerOrder[0].playerNumber + "Name");
-  console.log(newVar);
-  $("#" + newVar).parent().prop('disabled', true);
+  //    SOME MORE SHOWING/HIDING NEEDS TO BE DONE BUT I THINK THIS WORKS FOR THE MOST PART
+  function shootFirstPlayer(){
+    console.log(game.playerOrder);
+    $(".shoot").prop("disabled", false);
+    let newVar = (game.playerOrder[0].playerNumber + "Name");
+    console.log(newVar);
+    $("#" + newVar).parent().prop('disabled', true);
 
-  $('.nextRound').hide();
-  $('.newRound').hide();
-  $(".topThreeCheck").hide();
-  $('.killFirstPlayer').show();
-  $('.killSecondPlayer').hide();
-  //DOESNT WORK AFFECTS OTHER PARTS OF THE GAME
-}
-function shootSecondPlayer(){
-$(".shoot").prop("disabled", false);
-let newVar = (game.playerOrder[0].playerNumber + "Name");
-console.log(newVar);
-$("#" + newVar).parent().prop('disabled', true);
-$(".executiveAction").show()
-$('.nextRound').hide();
-$('.newRound').hide();
-$(".topThreeCheck").hide();
-$('.killFirstPlayer').hide();
-$('.killSecondPlayer').show();
-}
+    $('.nextRound').hide();
+    $('.newRound').hide();
+    $(".topThreeCheck").hide();
+    $('.killFirstPlayer').show();
+    $('.killSecondPlayer').hide();
+    //DOESNT WORK AFFECTS OTHER PARTS OF THE GAME
+  }
+  function shootSecondPlayer(){
+    $(".shoot").prop("disabled", false);
+    let newVar = (game.playerOrder[0].playerNumber + "Name");
+    console.log(newVar);
+    $("#" + newVar).parent().prop('disabled', true);
+
+    $('.nextRound').hide();
+    $('.newRound').hide();
+    $(".topThreeCheck").hide();
+    $('.killFirstPlayer').hide();
+    $('.killSecondPlayer').show();
+  }
 
 
 

@@ -20,12 +20,14 @@ body {
   display: none;
 }
 
-[type=radio] {
+
+
+/* [type=radio] {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
-}
+} */
 
 [type=radio]:checked {
   position: sticky;
@@ -394,4 +396,8 @@ label.neinLabel {
 
 .neinPic {
   background-image: url(https://github.com/Saul-Ordonez/secret-hitler/blob/master/media/Photo%20Dec%2004,%2012%2016%2036%20PM.jpg?raw=true);
+}
+
+.chaos {
+  display: none;
 }
