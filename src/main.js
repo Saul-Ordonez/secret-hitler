@@ -212,9 +212,10 @@ $(document).ready(function() {
 
         }
         $("." + shooter).parent().hide();
+        $(".nameButton").prop("disabled", true);
       }
     }
-    $("button.shoot").classList.toggle("nameButton");
+    $("button.shoot").className = "nameButton";
     $(".nextRound").show();
     $(".killFirstPlayer").hide();
     (".killSecondPlayer").hide();
@@ -343,7 +344,13 @@ $(document).ready(function() {
     }
     $(".nextRound").show();
     game.cardPlayedOnBoard();
-    executiveAction();
+    if (game.fascistPolicies === 3) {
+      top3Peak();
+    }else if (game.fascistPolicies === 4) {
+      shootFirstPlayer();
+    }else if (game.fascistPolice === 5) {
+      shootSecondPlayer();
+    }
     winCheck();
     $(".chancellorPolicyElimination").hide();
     //THIS IS WHERE WE SHOW THE CARD ON THE BOARD///
@@ -391,26 +398,43 @@ $("button#executivePolicyCheck").click(function(){
   $("#policy1").text(game.drawnCardsArray[0])
   $("#policy2").text(game.drawnCardsArray[1])
   $("#policy3").text(game.drawnCardsArray[2])
+  $("#closeTopThree").show();
 })
 $("button#closeTopThree").click(function(){
   $('.executiveAction').hide();
   $('.nextRound').show();
 })
-function executiveAction(){
+function top3Peak(){
   if(game.fascistPolicies === 3){
-    $(".topThreeCheck").show()
+    console.log('3 fasc branch');
     game.lookTop3();
-  }else if (game.fascistPolicies === 4) {
- $("button.nameButton").classList.toggle("shoot");
- //DOESNT WORK AFFECTS OTHER PARTS OF THE GAME
- $(".killFirstPlayer").show();
- $('.nextRound').hide();
-  }else if (game.fascistPolicies === 5) {
-    $("button.nameButton").classList.toggle("shoot");
-    $(".killSecondPlayer").show();
     $('.nextRound').hide();
-  }
+    $(".executiveAction").show()
+    $('.killFirstPlayer').hide();
+    $('.killSecondPlayer').hide();
 }
+}
+$("#cheatButton").click(function(){
+  game.fascistPolicies ++
+})
+function shootFirstPlayer(){
+  $(".nameButton").prop("disabled", false);
+  $("button.nameButton").className = "shoot";
+  $('.nextRound').hide();
+  $(".executiveAction").show()
+  $('.topThreeCheck').hide();
+  $('.killSecondPlayer').hide();
+  //DOESNT WORK AFFECTS OTHER PARTS OF THE GAME
+}
+function shootSecondPlayer(){
+$(".nameButton").prop("disabled", false);
+$("button.nameButton").className = "shoot";
+$('.nextRound').hide();
+$(".executiveAction").show()
+$('.killFirstPlayer').hide();
+$('.executiveAction').hide();
+}
+
 
 
 });

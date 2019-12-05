@@ -375,3 +375,6 @@ background-color: black;
 .newRound {
   display: none;
 }
+#closeTopThree {
+  display: none;
+}

@@ -97,7 +97,6 @@ export class Game {
     this.drawnCardsArray.push(this.deck[0]);
     this.drawnCardsArray.push(this.deck[1]);
     this.drawnCardsArray.push(this.deck[2]);
-    return this.drawnCardsArray;
   }
   cardPlayedOnBoard() {
     for (let i = 0; i < this.masterDeck.length; i++) {
