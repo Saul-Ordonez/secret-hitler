@@ -417,6 +417,8 @@ function top3Peak(){
 $("#cheatButton").click(function(){
   game.fascistPolicies ++
 })
+
+//    SOME MORE SHOWING/HIDING NEEDS TO BE DONE BUT I THINK THIS WORKS FOR THE MOST PART
 function shootFirstPlayer(){
   $(".nameButton").prop("disabled", false);
   $("button.nameButton").className = "shoot";
