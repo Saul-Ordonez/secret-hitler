@@ -268,7 +268,7 @@ $(document).ready(function() {
     console.log(voteTotal);
     game.totalYesVote = voteTotal;
     console.log(game.totalYesVote);
-    if (numberArray.length !== voteArray.length) {
+    if (game.playerOrder.length !== voteArray.length) {
       alert("Please make sure all players have voted.")
     } else {
       chancellor.voteHandle(game);
@@ -476,8 +476,8 @@ $(document).ready(function() {
     $('.selectChancellor').show();
     $(".nextRound").hide();
     playerTextUpdate();
-    // delete1.show();
-    // delete2.show();
+    delete1.show();
+    delete2.show();
     $(".nameButton").prop("disabled", false);
     console.log(game.playerOrder);
     for ( let i = 0; i < game.playerOrder.length; i++){
