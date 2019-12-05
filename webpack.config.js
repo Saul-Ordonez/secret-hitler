@@ -13,32 +13,40 @@ module.exports = {
   },
   devtool: 'eval-source-map',
   devServer: {
-  contentBase: './dist'
-},
+    contentBase: './dist'
+  },
   plugins: [
-  new UglifyJsPlugin({ sourceMap: true }),
-  new CleanWebpackPlugin(),
-  new HtmlWebpackPlugin({
-    title: 'Secret Hitler',
-    template: './src/index.html',
-    inject: 'body'
-  }),
-  new Dotenv()
-],
+    new UglifyJsPlugin({ sourceMap: true }),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Secret Hitler',
+      template: './src/index.html',
+      inject: 'body'
+    }),
+    new Dotenv()
+  ],
   module: {
-     rules: [
-       {
-         test: /\.css$/,
-         use: [
-           'style-loader',
-           'css-loader'
-         ]
-              },
-              {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: "eslint-loader"
-              }
-            ]
-          }
-        };
+    rules: [
+      {
+        test: /\.(png|jpe?g|gif|mp3|m4a)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+          },
+        ],
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader"
+      }
+    ]
+  }
+};

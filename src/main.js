@@ -7,6 +7,10 @@ import './styles.css';
 const players = new Players();
 const discardArray = [];
 
+import audioinstructions from './audio.m4a';
+const audioInstructions = new Audio();
+audioInstructions.src = audioinstructions;
+
 
 $(document).ready(function() {
   let game;
@@ -151,7 +155,7 @@ $(document).ready(function() {
   $("button#audioPlay").click(function() {
     $(".affiliationCheck").hide();
     $(".audio").show();
-    //AUDIO WOULD BE PROMPTED HERE!!!!!!!////
+    audioInstructions.play();
   });
 
   $("button#audioDone").click(function() {
